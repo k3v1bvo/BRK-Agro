@@ -86,27 +86,37 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
             <div className={`px-5 py-3 border-b text-xs ${
               isBrasilTheme 
                 ? 'bg-[#141916] border-stone-800' 
-                : 'bg-stone-50 border-stone-200'
+                : 'bg-amber-50/70 border-amber-200'
             }`}>
               {cartTotal >= 400 ? (
-                <div className="flex items-center gap-2 text-emerald-400 font-black">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className={`flex items-center gap-2 font-black ${
+                  isBrasilTheme ? 'text-emerald-400' : 'text-emerald-800'
+                }`}>
+                  <CheckCircle2 className="w-4 h-4 shrink-0" />
                   <span>¡Envío 100% GRATUITO a toda Bolivia desbloqueado!</span>
                 </div>
               ) : (
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between text-[11px] font-bold">
-                    <span className="flex items-center gap-1.5 text-stone-300">
-                      <Truck className="w-3.5 h-3.5 text-yellow-400" />
-                      <span>Agrega <strong className="text-yellow-400 font-black">{currency} {400 - cartTotal}</strong> más para <strong>ENVÍO GRATIS</strong></span>
+                    <span className={`flex items-center gap-1.5 ${
+                      isBrasilTheme ? 'text-stone-300' : 'text-stone-800'
+                    }`}>
+                      <Truck className={`w-3.5 h-3.5 ${isBrasilTheme ? 'text-yellow-400' : 'text-amber-600'}`} />
+                      <span>Agrega <strong className={`font-black ${isBrasilTheme ? 'text-yellow-400' : 'text-amber-800'}`}>{currency} {400 - cartTotal}</strong> más para <strong>ENVÍO GRATIS</strong></span>
                     </span>
-                    <span className="text-stone-400 text-[10px] font-mono">
+                    <span className={`text-[10px] font-mono ${
+                      isBrasilTheme ? 'text-stone-400' : 'text-stone-600'
+                    }`}>
                       {Math.round((cartTotal / 400) * 100)}%
                     </span>
                   </div>
-                  <div className="w-full h-2 bg-stone-800 rounded-full overflow-hidden p-0.5">
+                  <div className={`w-full h-2 rounded-full overflow-hidden p-0.5 ${
+                    isBrasilTheme ? 'bg-stone-800' : 'bg-amber-200/80'
+                  }`}>
                     <div 
-                      className="h-full bg-gradient-to-r from-yellow-500 to-emerald-400 rounded-full transition-all duration-500 ease-out shimmer-sweep-yellow"
+                      className={`h-full rounded-full transition-all duration-500 ease-out shimmer-sweep-yellow ${
+                        isBrasilTheme ? 'bg-gradient-to-r from-yellow-500 to-emerald-400' : 'bg-gradient-to-r from-amber-500 to-emerald-600'
+                      }`}
                       style={{ width: `${Math.min(100, Math.round((cartTotal / 400) * 100))}%` }}
                     />
                   </div>
@@ -178,7 +188,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                   <div className="flex-1 flex flex-col justify-between">
                     <div>
                       <div className="flex items-start justify-between gap-2">
-                        <h4 className="font-extrabold text-white text-xs sm:text-sm leading-snug line-clamp-2">
+                        <h4 className={`font-extrabold text-xs sm:text-sm leading-snug line-clamp-2 ${
+                          isBrasilTheme ? 'text-white' : 'text-stone-900'
+                        }`}>
                           {item.product.name}
                         </h4>
                         <button
@@ -261,9 +273,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
             }`}>
               
               <div className="space-y-1.5 mb-4 text-xs font-bold">
-                <div className="flex justify-between text-stone-400">
+                <div className={`flex justify-between ${isBrasilTheme ? 'text-stone-400' : 'text-stone-600'}`}>
                   <span>Subtotal prendas:</span>
-                  <span className="text-white font-extrabold">
+                  <span className={`font-extrabold ${isBrasilTheme ? 'text-white' : 'text-stone-900'}`}>
                     {currency} {(cartTotal + cartSavings).toLocaleString()}
                   </span>
                 </div>
