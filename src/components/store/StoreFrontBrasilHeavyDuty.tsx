@@ -802,8 +802,16 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
               <button
                 onClick={() => {
                   addToCart(camisaVerde, 'M', 1);
+                  try {
+                    confetti({
+                      particleCount: 50,
+                      spread: 60,
+                      origin: { y: 0.7 },
+                      colors: ['#FFE600', '#22C55E', '#FFFFFF']
+                    });
+                  } catch {}
                 }}
-                className="w-full py-3.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black hover:bg-yellow-400 shadow-md flex items-center justify-center gap-2 transition active:scale-95"
+                className="w-full py-3.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black hover:bg-yellow-400 shadow-md flex items-center justify-center gap-2 btn-tactile hover-lift transition"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>{t.card1Btn}</span>
@@ -812,7 +820,7 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
           </div>
 
           {/* Card 2: Botina de Trabalho Couro (Mud speckles) */}
-          <div className="bg-[#141916] rounded-3xl overflow-hidden border border-stone-800/90 shadow-2xl flex flex-col justify-between group hover:border-yellow-400 hover:glow-yellow transition-all duration-500">
+          <div className="bg-[#141916] rounded-3xl overflow-hidden border border-stone-800/90 shadow-2xl flex flex-col justify-between group hover:border-yellow-400 hover:glow-yellow hover-lift transition-all duration-500">
             <div>
               <div 
                 onClick={() => setSelectedProduct(botinaCouro)}
@@ -865,8 +873,16 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
               <button
                 onClick={() => {
                   addToCart(botinaCouro, '41', 1);
+                  try {
+                    confetti({
+                      particleCount: 50,
+                      spread: 60,
+                      origin: { y: 0.7 },
+                      colors: ['#FFE600', '#F59E0B', '#FFFFFF']
+                    });
+                  } catch {}
                 }}
-                className="w-full py-3.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black hover:bg-yellow-400 shadow-md flex items-center justify-center gap-2 transition active:scale-95"
+                className="w-full py-3.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black hover:bg-yellow-400 shadow-md flex items-center justify-center gap-2 btn-tactile hover-lift transition"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>{t.card2Btn}</span>
@@ -875,7 +891,7 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
           </div>
 
           {/* Card 3: Camisa UV50+ Verde Agro (Felipe R. Quote) */}
-          <div className="bg-[#141916] rounded-3xl overflow-hidden border border-stone-800/90 shadow-2xl flex flex-col justify-between group hover:border-yellow-400 hover:glow-yellow transition-all duration-500">
+          <div className="bg-[#141916] rounded-3xl overflow-hidden border border-stone-800/90 shadow-2xl flex flex-col justify-between group hover:border-yellow-400 hover:glow-yellow hover-lift transition-all duration-500">
             <div>
               <div 
                 onClick={() => setSelectedProduct(camisaVerde)}
@@ -928,8 +944,16 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
               <button
                 onClick={() => {
                   addToCart(camisaVerde, 'G/L', 1);
+                  try {
+                    confetti({
+                      particleCount: 50,
+                      spread: 60,
+                      origin: { y: 0.7 },
+                      colors: ['#FFE600', '#22C55E', '#FFFFFF']
+                    });
+                  } catch {}
                 }}
-                className="w-full py-3.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black hover:bg-yellow-400 shadow-md flex items-center justify-center gap-2 transition active:scale-95"
+                className="w-full py-3.5 px-4 rounded-xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black hover:bg-yellow-400 shadow-md flex items-center justify-center gap-2 btn-tactile hover-lift transition"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>{t.card3Btn}</span>

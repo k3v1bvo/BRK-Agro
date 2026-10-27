@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { 
   Inbox, 
   Store, 
@@ -100,6 +101,14 @@ export const OrdersAndPOSTab: React.FC = () => {
       approvalAmountPaid,
       approvalNotes
     );
+    try {
+      confetti({
+        particleCount: 65,
+        spread: 70,
+        origin: { y: 0.5 },
+        colors: ['#22C55E', '#FFE600', '#FFFFFF', '#0B4F26']
+      });
+    } catch {}
     setApprovingOrder(null);
   };
 
@@ -178,6 +187,15 @@ export const OrdersAndPOSTab: React.FC = () => {
       status: pendingBalance === 0 ? 'PAGADO' : 'PENDIENTE_PAGO',
       sellerName: 'Rodrigo (Ventas)',
     });
+
+    try {
+      confetti({
+        particleCount: 70,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: ['#22C55E', '#FFE600', '#D97706', '#FFFFFF']
+      });
+    } catch {}
 
     // Reset POS
     setPosCart([]);
@@ -909,7 +927,7 @@ export const OrdersAndPOSTab: React.FC = () => {
       {/* MODAL 1: ORDER APPROVAL WITH STOCK DEDUCTION */}
       {approvingOrder && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/75 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 space-y-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 space-y-4 animate-modal-pop shadow-[0_0_50px_rgba(0,0,0,0.25)]">
             <div className="flex justify-between items-center pb-3 border-b border-stone-100">
               <h3 className="font-extrabold text-stone-900 text-base">
                 Confirmar Venta Pedido #{approvingOrder.id}
@@ -996,7 +1014,7 @@ export const OrdersAndPOSTab: React.FC = () => {
       {/* MODAL 2: COLLECT PENDING BALANCE */}
       {collectingSale && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/75 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-stone-200 space-y-4">
+          <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-stone-200 space-y-4 animate-modal-pop shadow-[0_0_50px_rgba(0,0,0,0.25)]">
             <h3 className="font-extrabold text-stone-900 text-base">
               Cobrar Saldo de Venta #{collectingSale.id}
             </h3>

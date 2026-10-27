@@ -435,7 +435,7 @@ export const InventoryTab: React.FC = () => {
       {/* MODAL 1: STOCK REPLENISH BY SIZES */}
       {replenishProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/75 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-stone-200 space-y-4">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-stone-200 space-y-4 animate-modal-pop shadow-[0_0_50px_rgba(0,0,0,0.25)]">
             <div className="flex justify-between items-center pb-3 border-b border-stone-100">
               <h3 className="font-extrabold text-stone-900 text-base">
                 + Reponer Stock: {replenishProduct.name}
@@ -519,7 +519,7 @@ export const InventoryTab: React.FC = () => {
       {/* MODAL 2: PRODUCT CREATE / EDIT WITH IMGBB */}
       {isProductModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/75 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-stone-200 max-h-[90vh] overflow-y-auto space-y-4">
+          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-stone-200 max-h-[90vh] overflow-y-auto space-y-4 animate-modal-pop shadow-[0_0_50px_rgba(0,0,0,0.25)]">
             <div className="flex justify-between items-center pb-3 border-b border-stone-100">
               <h3 className="font-extrabold text-stone-900 text-base">
                 {editingProduct ? 'Editar Prenda Agro' : 'Registrar Nueva Prenda en Catálogo'}

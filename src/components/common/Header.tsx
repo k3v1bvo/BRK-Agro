@@ -125,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Size Calculator Modal Trigger */}
             <button
               onClick={onOpenSizeGuide}
-              className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded-xl transition"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-stone-700 bg-stone-100 hover:bg-stone-200 border border-stone-200 rounded-xl btn-tactile hover-lift transition"
               title="Calculadora y Guía de Tallas Horma BRK"
             >
               <Ruler className="w-3.5 h-3.5 text-amber-600" />
@@ -137,7 +137,7 @@ export const Header: React.FC<HeaderProps> = ({
               href={`https://wa.me/${cleanPhone}?text=Hola,%20quisiera%20solicitar%20el%20catálogo%20y%20precios%20mayoristas%20de%20indumentaria%20agropecuaria`}
               target="_blank"
               rel="noreferrer"
-              className="hidden xl:flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-xl transition shadow-sm"
+              className="hidden xl:flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-emerald-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-xl btn-tactile hover-lift transition shadow-sm"
             >
               <PhoneCall className="w-3.5 h-3.5 text-emerald-700" />
               <span>Asesor de Campo</span>
@@ -146,13 +146,13 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Shopping Cart Button with Glow */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-2.5 sm:px-4 sm:py-2.5 rounded-xl text-white font-extrabold flex items-center gap-2 shadow-md transition-all active:scale-95 hover:opacity-95"
+              className="relative p-2.5 sm:px-4 sm:py-2.5 rounded-xl text-white font-extrabold flex items-center gap-2 shadow-md btn-tactile hover-lift transition-all hover:opacity-95"
               style={{ backgroundColor: settings.primaryColor }}
             >
               <ShoppingBag className="w-4 h-4" />
               <span className="hidden sm:inline text-xs uppercase tracking-wide">Mi Carrito</span>
               {cartItemsCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-amber-500 text-stone-950 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-md animate-pulse">
+                <span className="absolute -top-1.5 -right-1.5 bg-amber-500 text-stone-950 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-md animate-bounce">
                   {cartItemsCount}
                 </span>
               )}
@@ -161,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Admin ERP Switcher Shortcut */}
             <button
               onClick={() => setViewMode('admin')}
-              className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-stone-800 bg-amber-400 hover:bg-amber-300 rounded-xl shadow-sm transition"
+              className="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-stone-800 bg-amber-400 hover:bg-amber-300 rounded-xl shadow-sm btn-tactile hover-lift transition"
               title="Panel Administrativo de Ventas e Inventario"
             >
               <span>⚙️ ERP</span>

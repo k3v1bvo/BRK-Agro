@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import confetti from 'canvas-confetti';
 import { 
   Palette, 
   Store, 
@@ -77,6 +78,14 @@ export const BrandSettingsTab: React.FC = () => {
     });
 
     setSavedSuccess(true);
+    try {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { y: 0.6 },
+        colors: [primaryColor, accentColor, '#FFE600', '#FFFFFF']
+      });
+    } catch {}
     setTimeout(() => setSavedSuccess(false), 2000);
   };
 
@@ -392,7 +401,7 @@ export const BrandSettingsTab: React.FC = () => {
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-3.5 rounded-xl font-black text-xs uppercase tracking-wider text-white shadow-lg transition hover:opacity-95"
+              className="w-full py-3.5 rounded-xl font-black text-xs uppercase tracking-wider text-white shadow-lg btn-tactile hover-lift transition hover:opacity-95"
               style={{ backgroundColor: primaryColor }}
             >
               Guardar y Aplicar Cambios de Marca

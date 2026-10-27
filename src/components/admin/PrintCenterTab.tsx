@@ -34,7 +34,7 @@ export const PrintCenterTab: React.FC = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setDocumentType('receipt')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold btn-tactile transition flex items-center gap-2 ${
               documentType === 'receipt'
                 ? 'bg-stone-900 text-amber-400 shadow-sm'
                 : 'text-stone-600 hover:bg-stone-100'
@@ -46,7 +46,7 @@ export const PrintCenterTab: React.FC = () => {
 
           <button
             onClick={() => setDocumentType('shipping_label')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold btn-tactile transition flex items-center gap-2 ${
               documentType === 'shipping_label'
                 ? 'bg-stone-900 text-amber-400 shadow-sm'
                 : 'text-stone-600 hover:bg-stone-100'
@@ -58,7 +58,7 @@ export const PrintCenterTab: React.FC = () => {
 
           <button
             onClick={() => setDocumentType('cash_report')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold btn-tactile transition flex items-center gap-2 ${
               documentType === 'cash_report'
                 ? 'bg-stone-900 text-amber-400 shadow-sm'
                 : 'text-stone-600 hover:bg-stone-100'
@@ -86,7 +86,7 @@ export const PrintCenterTab: React.FC = () => {
 
           <button
             onClick={handlePrint}
-            className="px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider text-white shadow flex items-center gap-2 bg-stone-900 hover:bg-stone-800 transition"
+            className="px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider text-white shadow flex items-center gap-2 bg-stone-900 hover:bg-stone-800 btn-tactile hover-lift transition"
           >
             <Printer className="w-4 h-4 text-amber-400" />
             <span>Imprimir Documento / PDF</span>

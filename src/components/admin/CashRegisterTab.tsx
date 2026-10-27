@@ -326,7 +326,7 @@ export const CashRegisterTab: React.FC = () => {
       {/* MODAL 1: REGISTRAR SALIDA / PAGO */}
       {isMovementModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/75 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 space-y-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 space-y-4 animate-modal-pop shadow-[0_0_50px_rgba(0,0,0,0.25)]">
             <h3 className="font-extrabold text-stone-900 text-base">
               {movementType === 'PAGO_PERSONAL' ? '👤 Registrar Pago a Personal' : '📦 Registrar Gasto Operativo'}
             </h3>
@@ -444,7 +444,7 @@ export const CashRegisterTab: React.FC = () => {
       {/* MODAL 2: CIERRE Y ARQUEO DIARIO */}
       {isCloseModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/75 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 space-y-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 space-y-4 animate-modal-pop shadow-[0_0_50px_rgba(0,0,0,0.25)]">
             <h3 className="font-extrabold text-stone-900 text-base">
               🔒 Cierre y Arqueo de Caja Chica
             </h3>
