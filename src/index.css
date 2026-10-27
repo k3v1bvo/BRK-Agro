@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary: #0b4f26;
+    --primary-hover: #07381b;
+    --primary-light: #e8f5ec;
+    --accent: #d97706;
+    --leather: #9e3d1b;
+    --dark-surface: #121513;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #1c1917;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Custom Luxury Agro Gradients & Effects */
+.bg-agro-gradient {
+  background: linear-gradient(135deg, #063a1d 0%, #0b4f26 50%, #152e1f 100%);
+}
+
+.bg-leather-gradient {
+  background: linear-gradient(135deg, #7c2d12 0%, #9e3d1b 50%, #431407 100%);
+}
+
+.bg-dark-cockpit {
+  background: radial-gradient(circle at 50% 0%, #1a2e22 0%, #0d1611 100%);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(217, 119, 6, 0.25);
+}
+
+.card-luxury {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.12), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  @page {
+    margin: 1cm;
+    size: auto;
+  }
+}
+
+/* Custom scrollbars for high polish */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
