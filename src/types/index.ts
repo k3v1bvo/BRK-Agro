@@ -13,6 +13,7 @@ export interface StoreSettings {
   address: string;
   bankAccountDetails: string;
   qrImageUrl?: string;
+  designTheme?: 'brasil_heavy_duty' | 'bolivia_country';
 }
 
 export interface ProductVariant {

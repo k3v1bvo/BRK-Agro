@@ -19,6 +19,9 @@ import { isSupabaseConfigured } from '../../services/storage';
 export const BrandSettingsTab: React.FC = () => {
   const { settings, updateSettings, resetToDemo, clearAll } = useStore();
 
+  const [designTheme, setDesignTheme] = useState<'brasil_heavy_duty' | 'bolivia_country'>(
+    settings.designTheme || 'brasil_heavy_duty'
+  );
   const [storeName, setStoreName] = useState(settings.storeName);
   const [slogan, setSlogan] = useState(settings.slogan);
   const [announcementBar, setAnnouncementBar] = useState(settings.announcementBar);
@@ -39,6 +42,13 @@ export const BrandSettingsTab: React.FC = () => {
     { name: 'Verde Oliva Ganadero', primary: '#365314', accent: '#D97706' },
   ];
 
+  const handleThemeChange = (theme: 'brasil_heavy_duty' | 'bolivia_country') => {
+    setDesignTheme(theme);
+    updateSettings({ designTheme: theme });
+    setSavedSuccess(true);
+    setTimeout(() => setSavedSuccess(false), 2000);
+  };
+
   const handleApplyPreset = (preset: { primary: string; accent: string }) => {
     setPrimaryColor(preset.primary);
     setAccentColor(preset.accent);
@@ -57,6 +67,7 @@ export const BrandSettingsTab: React.FC = () => {
       currency,
       primaryColor,
       accentColor,
+      designTheme,
       imgbbApiKey: imgbbApiKey.trim() || undefined,
       address: address.trim(),
     });
@@ -81,7 +92,7 @@ export const BrandSettingsTab: React.FC = () => {
               Personalización de Marca en Vivo (White-Label)
             </h2>
             <p className="text-xs text-stone-500 mt-0.5">
-              Cambia el nombre, colores, WhatsApp y moneda frente a tu cliente. Los cambios se reflejan al instante.
+              Cambia el estilo visual, colores, WhatsApp y datos de negocio frente al cliente en tiempo real.
             </p>
           </div>
         </div>
@@ -89,7 +100,7 @@ export const BrandSettingsTab: React.FC = () => {
         {savedSuccess && (
           <div className="mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs font-bold text-emerald-800 flex items-center gap-2 animate-fade-in">
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-            <span>¡Configuración y tema dinámico actualizados en tiempo real!</span>
+            <span>¡Configuración y estilo visual actualizados en tiempo real!</span>
           </div>
         )}
       </div>
@@ -97,6 +108,89 @@ export const BrandSettingsTab: React.FC = () => {
       {/* Main Settings Form */}
       <form onSubmit={handleSaveSettings} className="space-y-6">
         
+        {/* Visual Design Style Selector (Both Options) */}
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-extrabold text-stone-900 uppercase tracking-wide flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-500" />
+              <span>Estilo Visual del Storefront (Demostración al Cliente)</span>
+            </h3>
+            <span className="text-[11px] font-bold text-stone-500">2 Diseños Disponibles</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            {/* Design 1: BRK Agro Brasil Heavy Duty */}
+            <div
+              onClick={() => handleThemeChange('brasil_heavy_duty')}
+              className={`p-5 rounded-2xl border-2 text-left cursor-pointer transition relative flex flex-col justify-between ${
+                designTheme === 'brasil_heavy_duty'
+                  ? 'border-yellow-400 bg-stone-950 text-white shadow-xl ring-2 ring-yellow-400/50'
+                  : 'border-stone-200 hover:border-stone-400 bg-stone-900 text-stone-300 opacity-80'
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase bg-[#FFE600] text-black">
+                    ⚡ Diseño 1: BRK Brasil
+                  </span>
+                  {designTheme === 'brasil_heavy_duty' && (
+                    <span className="text-xs text-yellow-400 font-extrabold flex items-center gap-1">
+                      <CheckCircle2 className="w-4 h-4" /> Activo
+                    </span>
+                  )}
+                </div>
+                <h4 className="text-base font-black text-white font-heading">
+                  Dark Charcoal & Yellow Heavy-Duty
+                </h4>
+                <p className="text-xs text-stone-300 mt-1 leading-relaxed">
+                  Fondo concreto carbón (`#0e1110`), acentos amarillo industrial (`#FFE600`) y verde. Incluye "A FORÇA DO TRABALHO NO CAMPO", Stories/Reels interactivo "Gente do Campo", 3 insignias blindadas y sección "Os Preferidos de Quem Pega Pesado".
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-stone-800 flex items-center justify-between text-[11px] font-bold">
+                <span className="text-yellow-400">Reels TikTok/Insta • 3 Badges</span>
+                <span className="text-stone-400">R$ 9,90 Frete Fixo</span>
+              </div>
+            </div>
+
+            {/* Design 2: BRK Agro Bolivia Country */}
+            <div
+              onClick={() => handleThemeChange('bolivia_country')}
+              className={`p-5 rounded-2xl border-2 text-left cursor-pointer transition relative flex flex-col justify-between ${
+                designTheme === 'bolivia_country'
+                  ? 'border-emerald-600 bg-emerald-950 text-white shadow-xl ring-2 ring-emerald-500/50'
+                  : 'border-stone-200 hover:border-stone-400 bg-stone-50 text-stone-700'
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase bg-emerald-700 text-white">
+                    🌾 Diseño 2: BRK Bolivia
+                  </span>
+                  {designTheme === 'bolivia_country' && (
+                    <span className="text-xs text-emerald-400 font-extrabold flex items-center gap-1">
+                      <CheckCircle2 className="w-4 h-4" /> Activo
+                    </span>
+                  )}
+                </div>
+                <h4 className="text-base font-black text-stone-900 font-heading">
+                  Western Country & Cuero Legítimo
+                </h4>
+                <p className="text-xs text-stone-600 mt-1 leading-relaxed">
+                  Estilo sobrio para el mercado boliviano y ganadero tradicional. Lookbook visual, catálogo segmentado (Camisas, Botinas, Jeans 14.5oz, Niños), cotizador de encomiendas por flota y personalización con logo bordado.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-stone-200 flex items-center justify-between text-[11px] font-bold text-stone-600">
+                <span>Catálogo Completo • Filtros</span>
+                <span>Envíos Nacionales</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         {/* Color Theme Selector */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 space-y-4">
           <h3 className="text-sm font-extrabold text-stone-900 uppercase tracking-wide flex items-center gap-2">
