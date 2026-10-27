@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Palette, 
   Store, 
@@ -22,6 +22,10 @@ export const BrandSettingsTab: React.FC = () => {
   const [designTheme, setDesignTheme] = useState<'brasil_heavy_duty' | 'bolivia_country'>(
     settings.designTheme || 'brasil_heavy_duty'
   );
+
+  useEffect(() => {
+    setDesignTheme(settings.designTheme || 'brasil_heavy_duty');
+  }, [settings.designTheme]);
   const [storeName, setStoreName] = useState(settings.storeName);
   const [slogan, setSlogan] = useState(settings.slogan);
   const [announcementBar, setAnnouncementBar] = useState(settings.announcementBar);
