@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { 
   X, 
   ShoppingBag, 
@@ -55,6 +56,15 @@ export const ProductModal: React.FC<ProductModalProps> = ({
       isCustomizing && customText.trim() ? customText.trim() : undefined
     );
 
+    try {
+      confetti({
+        particleCount: 50,
+        spread: 65,
+        origin: { y: 0.65 },
+        colors: isBrasilTheme ? ['#FFE600', '#22C55E', '#FFFFFF'] : ['#D97706', '#0B4F26', '#F59E0B']
+      });
+    } catch {}
+
     setIsAdded(true);
     setTimeout(() => {
       setIsAdded(false);
@@ -64,7 +74,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md animate-fade-in">
-      <div className={`rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative transition-all duration-300 ${
+      <div className={`rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative animate-modal-pop transition-all duration-300 ${
         isBrasilTheme 
           ? 'bg-[#0e1110] text-stone-100 border-2 border-stone-800 shadow-[0_0_60px_rgba(0,0,0,0.85)]' 
           : 'bg-white text-stone-900 border border-stone-200'

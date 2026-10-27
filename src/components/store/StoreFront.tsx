@@ -188,7 +188,7 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
                   const el = document.getElementById('catalogo-grid');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="py-3.5 px-7 rounded-xl font-black text-xs uppercase tracking-wider text-stone-950 bg-amber-400 hover:bg-amber-300 shadow-xl transition-transform active:scale-95 flex items-center gap-2"
+                className="py-3.5 px-7 rounded-xl font-black text-xs uppercase tracking-wider text-stone-950 bg-amber-400 hover:bg-amber-300 shadow-xl btn-tactile hover-lift transition-all flex items-center gap-2"
               >
                 <span>Ver Catálogo Completo</span>
                 <ChevronRight className="w-4 h-4" />
@@ -196,7 +196,7 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
 
               <button
                 onClick={() => setIsSizeGuideOpen(true)}
-                className="py-3.5 px-6 rounded-xl font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 transition flex items-center gap-2"
+                className="py-3.5 px-6 rounded-xl font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 btn-tactile hover-lift transition flex items-center gap-2"
               >
                 <Ruler className="w-4 h-4 text-amber-400" />
                 <span>Calculadora de Talla Ideal</span>
@@ -206,7 +206,7 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
                 href={`https://wa.me/${cleanPhone}?text=Hola,%20quisiera%20cotizar%20pedido%20por%20mayor%20para%20mi%20hacienda`}
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs font-bold text-stone-300 hover:text-white underline underline-offset-4 flex items-center gap-1.5 ml-2"
+                className="text-xs font-bold text-stone-300 hover:text-white underline underline-offset-4 flex items-center gap-1.5 ml-2 hover-lift transition"
               >
                 <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Cotización por Mayor</span>
@@ -261,7 +261,7 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
                 const el = document.getElementById('catalogo-grid');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/5] cursor-pointer shadow-md border border-stone-200 card-luxury"
+              className="group relative rounded-2xl overflow-hidden aspect-[4/5] cursor-pointer shadow-md border border-stone-200 hover-lift hover-glow-amber transition-all duration-500"
             >
               <img
                 src={tile.image}

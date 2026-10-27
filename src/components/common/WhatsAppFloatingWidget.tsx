@@ -17,7 +17,7 @@ export const WhatsAppFloatingWidget: React.FC = () => {
       
       {/* Expanded Quick Message Bubble */}
       {isOpen && (
-        <div className={`mb-3 w-80 rounded-3xl shadow-2xl overflow-hidden animate-fade-in transition-all duration-300 ${
+        <div className={`mb-3 w-80 rounded-3xl shadow-2xl overflow-hidden animate-modal-pop transition-all duration-300 ${
           isBrasilTheme 
             ? 'bg-[#0e1110] text-stone-100 border-2 border-stone-800 shadow-[0_0_50px_rgba(0,0,0,0.85)]' 
             : 'bg-white text-stone-900 border border-stone-200'

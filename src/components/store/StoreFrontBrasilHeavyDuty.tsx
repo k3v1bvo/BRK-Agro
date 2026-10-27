@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import confetti from 'canvas-confetti';
 import { 
   SunMedium, 
   ShieldCheck, 
@@ -1031,11 +1032,11 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
       {/* 7. FULLSCREEN REEL / STORY MODAL (INTERACTIVE) */}
       {activeStoryModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in">
-          <div className="relative max-w-sm w-full rounded-3xl overflow-hidden bg-stone-900 border-2 border-yellow-400 shadow-2xl">
+          <div className="relative max-w-sm w-full rounded-3xl overflow-hidden bg-stone-900 border-2 border-yellow-400 shadow-2xl animate-modal-pop shadow-[0_0_50px_rgba(255,230,0,0.35)]">
             
             <button
               onClick={() => setActiveStoryModal(false)}
-              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black transition"
+              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/60 text-white hover:bg-black transition btn-tactile"
             >
               <X className="w-5 h-5" />
             </button>
@@ -1071,8 +1072,16 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
                   onClick={() => {
                     setActiveStoryModal(false);
                     addToCart(camisaVerde, 'G/L', 1);
+                    try {
+                      confetti({
+                        particleCount: 50,
+                        spread: 60,
+                        origin: { y: 0.65 },
+                        colors: ['#FFE600', '#22C55E', '#FFFFFF']
+                      });
+                    } catch {}
                   }}
-                  className="w-full py-3 rounded-xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black shadow-lg hover:bg-yellow-400 transition"
+                  className="w-full py-3.5 rounded-xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black shadow-lg hover:bg-yellow-400 btn-tactile shimmer-sweep-yellow transition"
                 >
                   {t.modalBuyBtn} ({currency} {t.card1Price})
                 </button>

@@ -57,7 +57,7 @@ export const SizeGuideModal: React.FC<SizeGuideModalProps> = ({ isOpen, onClose 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md animate-fade-in">
-      <div className={`rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative transition-all duration-300 ${
+      <div className={`rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative animate-modal-pop transition-all duration-300 ${
         isBrasilTheme 
           ? 'bg-[#0e1110] text-stone-100 border-2 border-stone-800 shadow-[0_0_60px_rgba(0,0,0,0.85)]' 
           : 'bg-white text-stone-900 border border-stone-200'

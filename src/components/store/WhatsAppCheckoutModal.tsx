@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { 
   X, 
   Send, 
@@ -76,6 +77,15 @@ export const WhatsAppCheckoutModal: React.FC<WhatsAppCheckoutModalProps> = ({
       notes: notes.trim() || undefined,
     });
 
+    try {
+      confetti({
+        particleCount: 80,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: isBrasilTheme ? ['#FFE600', '#22C55E', '#FFFFFF', '#F59E0B'] : ['#0B4F26', '#D97706', '#FFFFFF']
+      });
+    } catch {}
+
     setSubmittedOrderCode(newOrder.id);
   };
 
@@ -86,7 +96,7 @@ export const WhatsAppCheckoutModal: React.FC<WhatsAppCheckoutModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className={`rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border transition-colors duration-300 ${
+      <div className={`rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border animate-modal-pop transition-colors duration-300 ${
         isBrasilTheme 
           ? 'bg-[#0e1110] text-stone-100 border-stone-800' 
           : 'bg-white text-stone-900 border-stone-200'

@@ -44,7 +44,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className={`w-screen max-w-md shadow-2xl flex flex-col transition-colors duration-300 ${
+        <div className={`w-screen max-w-md shadow-2xl flex flex-col animate-drawer-slide transition-colors duration-300 ${
           isBrasilTheme 
             ? 'bg-[#0e1110] text-stone-100 border-l border-stone-800' 
             : 'bg-white text-stone-900 border-l border-stone-200'
@@ -256,9 +256,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onOpenCheckout }) => {
                   setIsCartOpen(false);
                   onOpenCheckout();
                 }}
-                className={`w-full py-4 px-6 rounded-2xl font-black text-xs uppercase tracking-wider shadow-2xl flex items-center justify-center gap-2 active:scale-95 transition-all ${
+                className={`w-full py-4 px-6 rounded-2xl font-black text-xs uppercase tracking-wider shadow-2xl flex items-center justify-center gap-2 btn-tactile transition-all ${
                   isBrasilTheme 
-                    ? 'bg-[#FFE600] text-black hover:bg-yellow-400 shadow-yellow-400/20' 
+                    ? 'bg-[#FFE600] text-black hover:bg-yellow-400 shadow-[0_0_25px_rgba(255,230,0,0.35)] shimmer-sweep-yellow' 
                     : 'text-white hover:opacity-95 shadow-md'
                 }`}
                 style={!isBrasilTheme ? { backgroundColor: settings.primaryColor } : undefined}

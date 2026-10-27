@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { ShoppingBag, AlertTriangle, Check, Edit3, Eye, Sparkles } from 'lucide-react';
 import { Product } from '../../types';
 import { useStore } from '../../context/StoreContext';
@@ -35,6 +36,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
       isCustomizing && customText.trim() ? customText.trim() : undefined
     );
 
+    try {
+      confetti({
+        particleCount: 35,
+        spread: 55,
+        origin: { y: 0.8 },
+        colors: ['#D97706', '#0B4F26', '#F59E0B']
+      });
+    } catch {}
+
     setAddedEffect(true);
     setTimeout(() => setAddedEffect(false), 1500);
   };
@@ -42,7 +52,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
   return (
     <div 
       onClick={() => onSelectProduct(product)}
-      className="group bg-white rounded-3xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-2xl hover:border-amber-400/80 transition-all duration-300 flex flex-col cursor-pointer relative"
+      className="group bg-white rounded-3xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-2xl hover:border-amber-400/80 hover-lift transition-all duration-300 flex flex-col cursor-pointer relative"
     >
       {/* Image Container with Badges */}
       <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden bg-stone-100">
@@ -196,7 +206,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelectProdu
             type="button"
             disabled={isOutOfStock}
             onClick={handleAddToCart}
-            className={`w-full py-3 px-4 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all duration-200 active:scale-95 ${
+            className={`w-full py-3 px-4 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md btn-tactile transition-all duration-200 ${
               isOutOfStock
                 ? 'bg-stone-200 text-stone-400 cursor-not-allowed shadow-none'
                 : addedEffect

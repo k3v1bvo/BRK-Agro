@@ -419,7 +419,7 @@ export const DashboardTab: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         
         {/* KPI 1: Ventas Brutas Totales */}
-        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover:shadow-md transition">
+        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover-lift transition-all duration-300">
           <div>
             <div className="flex items-center justify-between text-xs font-black text-stone-500 uppercase tracking-wider">
               <span>Ventas Brutas</span>
@@ -438,7 +438,7 @@ export const DashboardTab: React.FC = () => {
         </div>
 
         {/* KPI 2: Ganancia Bruta (Gross Profit) */}
-        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover:shadow-md transition">
+        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover-lift transition-all duration-300">
           <div>
             <div className="flex items-center justify-between text-xs font-black text-stone-500 uppercase tracking-wider">
               <span>Margen Bruto</span>
@@ -457,7 +457,7 @@ export const DashboardTab: React.FC = () => {
         </div>
 
         {/* KPI 3: Costo de Mercadería (CMV) */}
-        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover:shadow-md transition">
+        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover-lift transition-all duration-300">
           <div>
             <div className="flex items-center justify-between text-xs font-black text-stone-500 uppercase tracking-wider">
               <span>Costo Prendas</span>
@@ -476,7 +476,7 @@ export const DashboardTab: React.FC = () => {
         </div>
 
         {/* KPI 4: Gastos Operativos & Nómina */}
-        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover:shadow-md transition">
+        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover-lift transition-all duration-300">
           <div>
             <div className="flex items-center justify-between text-xs font-black text-stone-500 uppercase tracking-wider">
               <span>Gastos & Staff</span>
@@ -495,7 +495,7 @@ export const DashboardTab: React.FC = () => {
         </div>
 
         {/* KPI 5: Ticket Promedio por Pedido (AOV) */}
-        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover:shadow-md transition">
+        <div className="bg-white p-5 rounded-3xl shadow-sm border border-stone-200/90 flex flex-col justify-between hover-lift transition-all duration-300">
           <div>
             <div className="flex items-center justify-between text-xs font-black text-stone-500 uppercase tracking-wider">
               <span>Ticket Promedio</span>
@@ -514,7 +514,7 @@ export const DashboardTab: React.FC = () => {
         </div>
 
         {/* KPI 6: UTILIDAD NETA REAL (GOLDEN COCKPIT GLOW) */}
-        <div className="bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 text-white p-5 rounded-3xl shadow-xl border-2 border-amber-400 flex flex-col justify-between relative overflow-hidden">
+        <div className="bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 text-white p-5 rounded-3xl shadow-xl border-2 border-amber-400 flex flex-col justify-between relative overflow-hidden hover-lift hover-glow-yellow transition-all duration-300">
           <div className="absolute top-0 right-0 transform translate-x-3 -translate-y-3 opacity-15 pointer-events-none">
             <Sparkles className="w-24 h-24 text-amber-400" />
           </div>
