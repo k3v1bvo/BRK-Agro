@@ -98,20 +98,22 @@ export const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children 
                   ? 'text-stone-300 bg-stone-900/90 border-stone-800' 
                   : 'text-stone-400 bg-stone-800/80 border-stone-700'
               }`}>
-                <Calendar className={`w-3.5 h-3.5 ${isBrasilTheme ? 'text-[#FFE600]' : 'text-amber-400'}`} />
-                <span className="capitalize">{currentDate}</span>
+                <Calendar className={`w-4.5 h-4.5 ${isBrasilTheme ? 'text-[#FFE600]' : 'text-amber-400'} stroke-[2]`} />
+                <span className="capitalize font-bold">{currentDate}</span>
               </div>
 
               {/* Button to toggle to Public Store */}
               <button
                 onClick={() => setViewMode('store')}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-black shadow-md transition-transform active:scale-95 ${
+                className={`group flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-black shadow-md transition-all active:scale-95 btn-tactile hover-lift ${
                   isBrasilTheme 
                     ? 'bg-[#FFE600] hover:bg-[#ffe81a] text-black shadow-[0_0_20px_rgba(255,230,0,0.3)]' 
                     : 'bg-amber-500 hover:bg-amber-400 text-stone-950'
                 }`}
               >
-                <Eye className="w-4 h-4" />
+                <div className="w-6 h-6 rounded-md bg-black/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Eye className="w-4.5 h-4.5 stroke-[2.2]" />
+                </div>
                 <span>Ver Tienda Pública</span>
               </button>
             </div>
@@ -119,11 +121,11 @@ export const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children 
           </div>
         </div>
 
-        {/* Sub-Navigation Tabs */}
+        {/* Sub-Navigation Tabs (Prominent High-Visibility Icons) */}
         <div className={`border-t overflow-x-auto scrollbar-none ${
           isBrasilTheme ? 'bg-[#050706] border-stone-800' : 'bg-stone-950 border-stone-800'
         }`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-1 sm:space-x-2 py-1.5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-1 sm:space-x-2 py-2">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeAdminTab === tab.id;
@@ -131,7 +133,7 @@ export const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children 
                 <button
                   key={tab.id}
                   onClick={() => setActiveAdminTab(tab.id)}
-                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap shrink-0 relative ${
+                  className={`group flex items-center gap-2.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-black transition whitespace-nowrap shrink-0 relative btn-tactile hover-lift ${
                     isActive
                       ? isBrasilTheme
                         ? 'bg-[#181f1c] text-[#FFE600] shadow-sm border border-[#FFE600]/40 shadow-[0_0_15px_rgba(255,230,0,0.15)]'
@@ -141,14 +143,20 @@ export const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children 
                       : 'text-stone-400 hover:text-stone-200 hover:bg-stone-900'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${
-                    isActive 
-                      ? isBrasilTheme ? 'text-[#FFE600]' : 'text-amber-400' 
-                      : 'text-stone-400'
-                  }`} />
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all ${
+                    isActive
+                      ? isBrasilTheme ? 'bg-[#FFE600]/25 border border-[#FFE600]/50' : 'bg-amber-400/25 border border-amber-400/50'
+                      : 'bg-stone-800/80 border border-stone-700/60 group-hover:scale-105 group-hover:bg-stone-700/80'
+                  }`}>
+                    <Icon className={`w-5 h-5 stroke-[2.2] ${
+                      isActive 
+                        ? isBrasilTheme ? 'text-[#FFE600]' : 'text-amber-400' 
+                        : 'text-stone-300 group-hover:text-white'
+                    }`} />
+                  </div>
                   <span>{tab.label}</span>
                   {tab.badge !== undefined && (
-                    <span className="ml-1 bg-red-600 text-white text-[10px] font-black px-1.5 py-0.2 rounded-full animate-pulse shadow">
+                    <span className="ml-1 bg-red-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full animate-pulse shadow">
                       {tab.badge}
                     </span>
                   )}

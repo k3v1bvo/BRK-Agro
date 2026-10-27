@@ -188,17 +188,17 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
                   const el = document.getElementById('catalogo-grid');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="py-3.5 px-7 rounded-xl font-black text-xs uppercase tracking-wider text-stone-950 bg-amber-400 hover:bg-amber-300 shadow-xl btn-tactile hover-lift transition-all flex items-center gap-2"
+                className="py-3.5 px-7 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider text-stone-950 bg-amber-400 hover:bg-amber-300 shadow-xl btn-tactile hover-lift transition-all flex items-center gap-2.5"
               >
                 <span>Ver Catálogo Completo</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-5 h-5 stroke-[2.2]" />
               </button>
 
               <button
                 onClick={() => setIsSizeGuideOpen(true)}
-                className="py-3.5 px-6 rounded-xl font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 btn-tactile hover-lift transition flex items-center gap-2"
+                className="py-3.5 px-6 rounded-xl font-extrabold text-xs sm:text-sm uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 btn-tactile hover-lift transition flex items-center gap-2.5"
               >
-                <Ruler className="w-4 h-4 text-amber-400" />
+                <Ruler className="w-5 h-5 text-amber-400 stroke-[2.2]" />
                 <span>Calculadora de Talla Ideal</span>
               </button>
 
@@ -206,9 +206,9 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
                 href={`https://wa.me/${cleanPhone}?text=Hola,%20quisiera%20cotizar%20pedido%20por%20mayor%20para%20mi%20hacienda`}
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs font-bold text-stone-300 hover:text-white underline underline-offset-4 flex items-center gap-1.5 ml-2 hover-lift transition"
+                className="text-xs sm:text-sm font-bold text-stone-300 hover:text-white underline underline-offset-4 flex items-center gap-2 ml-2 hover-lift transition"
               >
-                <PhoneCall className="w-3.5 h-3.5 text-emerald-400" />
+                <PhoneCall className="w-4.5 h-4.5 text-emerald-400 stroke-[2.2]" />
                 <span>Cotización por Mayor</span>
               </a>
             </div>
@@ -283,9 +283,9 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
                 <p className="text-xs text-stone-300 mt-1 line-clamp-2">
                   {tile.desc}
                 </p>
-                <div className="mt-3 flex items-center gap-1.5 text-xs font-black text-amber-400">
+                <div className="mt-3 flex items-center gap-2 text-xs sm:text-sm font-black text-amber-400">
                   <span>Explorar Prendas</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4.5 h-4.5 group-hover:translate-x-1 transition-transform stroke-[2.2]" />
                 </div>
               </div>
             </div>
@@ -301,7 +301,7 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-stone-100">
             <div>
               <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-800">
-                <Flame className="w-4 h-4 text-amber-600" />
+                <Flame className="w-5 h-5 text-amber-600 stroke-[2]" />
                 <span>INVENTARIO DISPONIBLE CON DESPACHO INMEDIATO</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-black text-stone-900 font-heading mt-1">
@@ -397,8 +397,8 @@ export const StoreFront: React.FC<StoreFrontProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="bg-gradient-to-r from-stone-900 via-stone-950 to-stone-900 text-white rounded-3xl p-8 sm:p-12 border border-stone-800 shadow-xl relative overflow-hidden">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-1.5 text-xs font-black text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20 mb-3">
-              <Ruler className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-amber-400 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20 mb-3">
+              <Ruler className="w-4.5 h-4.5 stroke-[2.2]" />
               <span>AJUSTE PERFECTO GARANTIZADO</span>
             </div>
 

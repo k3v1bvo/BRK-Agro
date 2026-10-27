@@ -28,7 +28,8 @@ import {
   Clock,
   Award,
   Zap,
-  Filter
+  Filter,
+  Menu
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 import { Product } from '../../types';
@@ -203,6 +204,7 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
   const [lang, setLang] = useState<'es' | 'pt'>('es'); // Default Spanish!
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedFilterCategory, setSelectedFilterCategory] = useState<string>('todos');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   const t = I18N[lang];
   const currency = lang === 'pt' ? 'R$' : (settings.currency || 'Bs.');
@@ -312,17 +314,19 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
               </a>
             </div>
 
-            {/* Desktop Navigation Links with Vector Icons */}
-            <nav className="hidden xl:flex items-center gap-1 text-xs font-black uppercase tracking-wider text-stone-300">
+            {/* Desktop Navigation Links with Vector Icons (Prominent, High-Visibility Icons) */}
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-black uppercase tracking-wider text-stone-200">
               
               <button 
                 onClick={() => {
                   setSelectedFilterCategory('camisas');
                   document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl hover:bg-stone-800/80 hover:text-yellow-400 transition"
+                className="group flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-stone-800/90 hover:text-yellow-400 transition-all btn-tactile hover-lift"
               >
-                <SunMedium className="w-4 h-4 text-emerald-400" />
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-emerald-500/25 transition-all shadow-sm">
+                  <SunMedium className="w-5 h-5 text-emerald-400 stroke-[2.2]" />
+                </div>
                 <span>{t.navShirts}</span>
               </button>
 
@@ -331,9 +335,11 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
                   setSelectedFilterCategory('botinas');
                   document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl hover:bg-stone-800/80 hover:text-yellow-400 transition"
+                className="group flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-stone-800/90 hover:text-yellow-400 transition-all btn-tactile hover-lift"
               >
-                <ShieldCheck className="w-4 h-4 text-amber-500" />
+                <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-amber-500/25 transition-all shadow-sm">
+                  <ShieldCheck className="w-5 h-5 text-amber-400 stroke-[2.2]" />
+                </div>
                 <span>{t.navBoots}</span>
               </button>
 
@@ -342,9 +348,11 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
                   setSelectedFilterCategory('jeans');
                   document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl hover:bg-stone-800/80 hover:text-yellow-400 transition"
+                className="group flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-stone-800/90 hover:text-yellow-400 transition-all btn-tactile hover-lift"
               >
-                <Layers className="w-4 h-4 text-blue-400" />
+                <div className="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-blue-500/25 transition-all shadow-sm">
+                  <Layers className="w-5 h-5 text-blue-400 stroke-[2.2]" />
+                </div>
                 <span>{t.navJeans}</span>
               </button>
 
@@ -353,9 +361,11 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
                   setSelectedFilterCategory('accesorios');
                   document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl hover:bg-stone-800/80 hover:text-yellow-400 transition"
+                className="group flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-stone-800/90 hover:text-yellow-400 transition-all btn-tactile hover-lift"
               >
-                <Sparkles className="w-4 h-4 text-purple-400" />
+                <div className="w-8 h-8 rounded-lg bg-purple-500/15 border border-purple-500/30 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-purple-500/25 transition-all shadow-sm">
+                  <Sparkles className="w-5 h-5 text-purple-400 stroke-[2.2]" />
+                </div>
                 <span>{t.navAccessories}</span>
               </button>
 
@@ -364,68 +374,201 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
                   setSelectedFilterCategory('todos');
                   document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-yellow-400 hover:bg-yellow-400/10 font-black transition"
+                className="group flex items-center gap-2 px-3 py-2 rounded-xl text-yellow-400 hover:bg-yellow-400/15 font-black transition-all btn-tactile hover-lift"
               >
-                <Flame className="w-4 h-4 fill-yellow-400" />
+                <div className="w-8 h-8 rounded-lg bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-yellow-400/30 transition-all shadow-sm">
+                  <Flame className="w-5 h-5 fill-yellow-400 text-yellow-400 stroke-[2] animate-pulse" />
+                </div>
                 <span>{t.navOffers}</span>
               </button>
 
             </nav>
 
             {/* Quick Actions (Search Bar & Cart) */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               
-              {/* Size Guide Button */}
+              {/* Size Guide Button with Prominent Ruler Icon */}
               <button
                 onClick={onOpenSizeGuide}
-                className="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-black uppercase tracking-wider text-stone-300 bg-stone-900/90 hover:bg-stone-800 border border-stone-700/80 rounded-xl transition shadow-sm active:scale-95"
+                className="hidden md:flex items-center gap-2 px-3.5 py-2.5 text-xs xl:text-sm font-black uppercase tracking-wider text-stone-200 bg-stone-900/90 hover:bg-stone-800 border border-stone-700/80 rounded-xl transition shadow-sm btn-tactile hover-lift group"
               >
-                <Ruler className="w-3.5 h-3.5 text-yellow-400" />
+                <div className="w-8 h-8 rounded-lg bg-yellow-400/15 border border-yellow-400/30 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Ruler className="w-5 h-5 text-yellow-400 stroke-[2.2]" />
+                </div>
                 <span>{t.sizeGuide}</span>
               </button>
 
               {/* Shopping Bag Button with Live Counter Badge & Subtotal */}
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="px-4 py-2.5 rounded-2xl font-black text-xs uppercase tracking-wider bg-[#FFE600] text-black hover:bg-yellow-400 shadow-xl flex items-center gap-2.5 transition active:scale-95 group relative"
+                className="px-4 py-2.5 rounded-2xl font-black text-xs xl:text-sm uppercase tracking-wider bg-[#FFE600] text-black hover:bg-yellow-400 shadow-xl flex items-center gap-3 transition btn-tactile hover-lift group relative"
               >
                 <div className="relative">
-                  <ShoppingBag className="w-4 h-4 group-hover:rotate-6 transition-transform" />
+                  <div className="w-8 h-8 rounded-xl bg-black/15 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                    <ShoppingBag className="w-5 h-5 text-black stroke-[2.2]" />
+                  </div>
                   {cartItemsCount > 0 && (
-                    <span className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-red-600 text-white text-[10px] font-black flex items-center justify-center animate-bounce shadow">
+                    <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-600 text-white text-[11px] font-black flex items-center justify-center animate-bounce shadow-lg border-2 border-[#FFE600]">
                       {cartItemsCount}
                     </span>
                   )}
                 </div>
                 <span>{t.cart}</span>
                 {cartTotal > 0 && (
-                  <span className="bg-black/85 text-[#FFE600] px-2 py-0.5 rounded-lg text-[10px] font-black">
+                  <span className="bg-black/90 text-[#FFE600] px-2.5 py-1 rounded-lg text-xs font-black">
                     {currency} {cartTotal.toLocaleString()}
                   </span>
                 )}
+              </button>
+
+              {/* Mobile Hamburger Menu Toggle Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2.5 rounded-xl bg-stone-900 border border-stone-800 text-yellow-400 hover:text-white hover:bg-stone-800 transition active:scale-95 btn-tactile hover-lift"
+                aria-label="Abrir Menú de Navegación"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6 stroke-[2.2]" /> : <Menu className="w-6 h-6 stroke-[2.2]" />}
               </button>
 
             </div>
 
           </div>
 
+          {/* Mobile Navigation Drawer Overlay (Prominent 24px Icons) */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden mt-3 p-4 bg-[#141916] border border-stone-800/90 rounded-2xl shadow-2xl animate-modal-pop space-y-2.5">
+              <div className="flex items-center justify-between text-xs font-black uppercase tracking-widest text-stone-400 px-1 pb-1 border-b border-stone-800">
+                <span>Catálogo & Categorías BRK</span>
+                <span className="text-[10px] text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded-full border border-yellow-400/30">Navegación Rápida</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                {/* Camisas UV50+ */}
+                <button
+                  onClick={() => {
+                    setSelectedFilterCategory('camisas');
+                    setMobileMenuOpen(false);
+                    document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-stone-900/90 border border-stone-800/80 hover:border-emerald-500/50 hover:bg-stone-800/80 text-left transition"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0 shadow-sm">
+                    <SunMedium className="w-6 h-6 text-emerald-400 stroke-[2.2]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-black text-white">{t.navShirts}</div>
+                    <div className="text-[11px] text-stone-400">Protección Solar Homologada</div>
+                  </div>
+                </button>
+
+                {/* Botinas de Cuero */}
+                <button
+                  onClick={() => {
+                    setSelectedFilterCategory('botinas');
+                    setMobileMenuOpen(false);
+                    document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-stone-900/90 border border-stone-800/80 hover:border-amber-500/50 hover:bg-stone-800/80 text-left transition"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0 shadow-sm">
+                    <ShieldCheck className="w-6 h-6 text-amber-400 stroke-[2.2]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-black text-white">{t.navBoots}</div>
+                    <div className="text-[11px] text-stone-400">Cuero Flor Legítimo 100%</div>
+                  </div>
+                </button>
+
+                {/* Jeans y Pantalones */}
+                <button
+                  onClick={() => {
+                    setSelectedFilterCategory('jeans');
+                    setMobileMenuOpen(false);
+                    document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-stone-900/90 border border-stone-800/80 hover:border-blue-500/50 hover:bg-stone-800/80 text-left transition"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-blue-500/20 border border-blue-500/40 flex items-center justify-center shrink-0 shadow-sm">
+                    <Layers className="w-6 h-6 text-blue-400 stroke-[2.2]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-black text-white">{t.navJeans}</div>
+                    <div className="text-[11px] text-stone-400">Denim Pesado 14oz Antidesgarro</div>
+                  </div>
+                </button>
+
+                {/* Accesorios */}
+                <button
+                  onClick={() => {
+                    setSelectedFilterCategory('accesorios');
+                    setMobileMenuOpen(false);
+                    document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-stone-900/90 border border-stone-800/80 hover:border-purple-500/50 hover:bg-stone-800/80 text-left transition"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center shrink-0 shadow-sm">
+                    <Sparkles className="w-6 h-6 text-purple-400 stroke-[2.2]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-black text-white">{t.navAccessories}</div>
+                    <div className="text-[11px] text-stone-400">Gorras, Sombreros & Boinas</div>
+                  </div>
+                </button>
+
+                {/* Ofertas Agro */}
+                <button
+                  onClick={() => {
+                    setSelectedFilterCategory('todos');
+                    setMobileMenuOpen(false);
+                    document.getElementById('lancamentos')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-yellow-400/10 border border-yellow-400/30 hover:bg-yellow-400/20 text-left transition"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/20 border border-yellow-400/50 flex items-center justify-center shrink-0 shadow-sm">
+                    <Flame className="w-6 h-6 text-yellow-400 fill-yellow-400 stroke-[2]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-black text-yellow-400">{t.navOffers}</div>
+                    <div className="text-[11px] text-stone-300">Precios Mayoristas desde 3 uds.</div>
+                  </div>
+                </button>
+
+                {/* Guía de Tallas */}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenSizeGuide();
+                  }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-stone-900/90 border border-stone-800/80 hover:border-yellow-400/50 text-left transition"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-yellow-400/20 border border-yellow-400/40 flex items-center justify-center shrink-0 shadow-sm">
+                    <Ruler className="w-6 h-6 text-yellow-400 stroke-[2.2]" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-black text-white">{t.sizeGuide}</div>
+                    <div className="text-[11px] text-stone-400">Calculadora de Horma y Medidas</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Integrated Live Search Bar with Tags */}
           <div className="mt-3 pt-3 border-t border-stone-800/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div className="relative flex-1 max-w-xl">
-              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 transform -translate-y-1/2" />
+              <Search className="w-5 h-5 text-stone-400 absolute left-3.5 top-1/2 transform -translate-y-1/2 stroke-[2.2]" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder={t.searchPlaceholder}
-                className="w-full pl-10 pr-10 py-2 rounded-xl bg-stone-900/90 border border-stone-700/80 text-xs text-white placeholder-stone-400 focus:outline-none focus:border-yellow-400 transition"
+                className="w-full pl-11 pr-10 py-2.5 rounded-xl bg-stone-900/90 border border-stone-700/80 text-xs sm:text-sm text-white placeholder-stone-400 focus:outline-none focus:border-yellow-400 transition"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-stone-400 hover:text-white"
                 >
-                  <X className="w-3.5 h-3.5" />
+                  <X className="w-4 h-4" />
                 </button>
               )}
             </div>
@@ -697,50 +840,86 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
           </div>
         </div>
 
-        {/* Quick Category Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+        {/* Quick Category Filter Pills (Prominent, High-Visibility Icons) */}
+        <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto pb-4 mb-8 scrollbar-none">
           <button
             onClick={() => setSelectedFilterCategory('todos')}
-            className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition ${
+            className={`px-4 sm:px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all flex items-center gap-2.5 btn-tactile hover-lift shrink-0 ${
               selectedFilterCategory === 'todos'
-                ? 'bg-[#FFE600] text-black shadow-lg scale-105'
+                ? 'bg-[#FFE600] text-black shadow-lg scale-105 border border-yellow-400'
                 : 'bg-stone-900 text-stone-300 hover:bg-stone-800 border border-stone-800'
             }`}
           >
-            🔥 Todos los Modelos
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+              selectedFilterCategory === 'todos' ? 'bg-black/15' : 'bg-yellow-400/20'
+            }`}>
+              <Flame className={`w-4.5 h-4.5 ${selectedFilterCategory === 'todos' ? 'text-black fill-black' : 'text-yellow-400 fill-yellow-400'} stroke-[2]`} />
+            </div>
+            <span>🔥 Todos los Modelos</span>
           </button>
+          
           <button
             onClick={() => setSelectedFilterCategory('camisas')}
-            className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition flex items-center gap-1.5 ${
+            className={`px-4 sm:px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all flex items-center gap-2.5 btn-tactile hover-lift shrink-0 ${
               selectedFilterCategory === 'camisas'
-                ? 'bg-[#FFE600] text-black shadow-lg scale-105'
+                ? 'bg-[#FFE600] text-black shadow-lg scale-105 border border-yellow-400'
                 : 'bg-stone-900 text-stone-300 hover:bg-stone-800 border border-stone-800'
             }`}
           >
-            <SunMedium className="w-3.5 h-3.5 text-emerald-400" />
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+              selectedFilterCategory === 'camisas' ? 'bg-black/15' : 'bg-emerald-500/20'
+            }`}>
+              <SunMedium className={`w-5 h-5 ${selectedFilterCategory === 'camisas' ? 'text-black' : 'text-emerald-400'} stroke-[2.2]`} />
+            </div>
             <span>Camisas UV50+</span>
           </button>
+          
           <button
             onClick={() => setSelectedFilterCategory('botinas')}
-            className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition flex items-center gap-1.5 ${
+            className={`px-4 sm:px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all flex items-center gap-2.5 btn-tactile hover-lift shrink-0 ${
               selectedFilterCategory === 'botinas'
-                ? 'bg-[#FFE600] text-black shadow-lg scale-105'
+                ? 'bg-[#FFE600] text-black shadow-lg scale-105 border border-yellow-400'
                 : 'bg-stone-900 text-stone-300 hover:bg-stone-800 border border-stone-800'
             }`}
           >
-            <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+              selectedFilterCategory === 'botinas' ? 'bg-black/15' : 'bg-amber-500/20'
+            }`}>
+              <ShieldCheck className={`w-5 h-5 ${selectedFilterCategory === 'botinas' ? 'text-black' : 'text-amber-400'} stroke-[2.2]`} />
+            </div>
             <span>Botinas de Cuero</span>
           </button>
+          
           <button
             onClick={() => setSelectedFilterCategory('jeans')}
-            className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition flex items-center gap-1.5 ${
+            className={`px-4 sm:px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all flex items-center gap-2.5 btn-tactile hover-lift shrink-0 ${
               selectedFilterCategory === 'jeans'
-                ? 'bg-[#FFE600] text-black shadow-lg scale-105'
+                ? 'bg-[#FFE600] text-black shadow-lg scale-105 border border-yellow-400'
                 : 'bg-stone-900 text-stone-300 hover:bg-stone-800 border border-stone-800'
             }`}
           >
-            <Layers className="w-3.5 h-3.5 text-blue-400" />
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+              selectedFilterCategory === 'jeans' ? 'bg-black/15' : 'bg-blue-500/20'
+            }`}>
+              <Layers className={`w-5 h-5 ${selectedFilterCategory === 'jeans' ? 'text-black' : 'text-blue-400'} stroke-[2.2]`} />
+            </div>
             <span>Jeans & Pantalones</span>
+          </button>
+
+          <button
+            onClick={() => setSelectedFilterCategory('accesorios')}
+            className={`px-4 sm:px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-black uppercase tracking-wider transition-all flex items-center gap-2.5 btn-tactile hover-lift shrink-0 ${
+              selectedFilterCategory === 'accesorios'
+                ? 'bg-[#FFE600] text-black shadow-lg scale-105 border border-yellow-400'
+                : 'bg-stone-900 text-stone-300 hover:bg-stone-800 border border-stone-800'
+            }`}
+          >
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+              selectedFilterCategory === 'accesorios' ? 'bg-black/15' : 'bg-purple-500/20'
+            }`}>
+              <Sparkles className={`w-5 h-5 ${selectedFilterCategory === 'accesorios' ? 'text-black' : 'text-purple-400'} stroke-[2.2]`} />
+            </div>
+            <span>Accesorios & Boinas</span>
           </button>
         </div>
 

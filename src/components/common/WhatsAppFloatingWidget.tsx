@@ -78,10 +78,10 @@ export const WhatsAppFloatingWidget: React.FC = () => {
               🤠 ¡Hola! ¿Tienes dudas sobre tu talla en camisas UV50+ o botinas de cuero? ¿O necesitas una cotización por mayor para tu cabaña? Escríbeme y te respondo en minutos.
             </div>
 
-            <div className={`flex items-center gap-1.5 text-[11px] font-bold ${
+            <div className={`flex items-center gap-2 text-xs font-bold ${
               isBrasilTheme ? 'text-emerald-400' : 'text-emerald-800'
             }`}>
-              <ShieldCheck className="w-3.5 h-3.5" />
+              <ShieldCheck className="w-4.5 h-4.5 stroke-[2.2]" />
               <span>1er Cambio de Talla Gratis Garantizado</span>
             </div>
 
@@ -89,13 +89,13 @@ export const WhatsAppFloatingWidget: React.FC = () => {
               href={`https://wa.me/${cleanPhone}?text=Hola%20Rodrigo,%20estoy%20en%20la%20tienda%20online%20de%20BRK%20Agro%20y%20tengo%20una%20consulta`}
               target="_blank"
               rel="noreferrer"
-              className={`w-full py-3 px-4 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition active:scale-95 ${
+              className={`w-full py-3 px-4 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-lg transition active:scale-95 btn-tactile hover-lift ${
                 isBrasilTheme 
                   ? 'bg-[#FFE600] hover:bg-[#ffe81a] text-black shadow-[0_0_20px_rgba(255,230,0,0.35)]' 
                   : 'bg-emerald-700 hover:bg-emerald-600 text-white'
               }`}
             >
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-4.5 h-4.5 stroke-[2.2]" />
               <span>Chatear por WhatsApp</span>
             </a>
           </div>

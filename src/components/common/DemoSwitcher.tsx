@@ -19,17 +19,17 @@ export const DemoSwitcher: React.FC = () => {
         {/* Toggle Theme / Style */}
         <button
           onClick={toggleTheme}
-          className="flex items-center gap-2.5 px-3 py-1.5 rounded-2xl bg-stone-900/90 hover:bg-stone-800 text-xs font-bold transition text-left active:scale-95 group border border-stone-800"
+          className="flex items-center gap-3 px-3.5 py-2 rounded-2xl bg-stone-900/90 hover:bg-stone-800 text-xs font-bold transition text-left active:scale-95 group border border-stone-800 btn-tactile hover-lift"
           title="Alternar entre el estilo oficial BRK Brasil Heavy-Duty y BRK Bolivia Country"
         >
-          <div className="w-6 h-6 rounded-xl bg-yellow-400/20 text-yellow-400 flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform">
-            <Palette className="w-3.5 h-3.5" />
+          <div className="w-8 h-8 rounded-xl bg-yellow-400/20 text-yellow-400 flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform shadow-sm">
+            <Palette className="w-4.5 h-4.5 stroke-[2.2]" />
           </div>
           <div>
             <div className="text-[10px] text-stone-400 uppercase font-black tracking-wider">
               Diseño Visual:
             </div>
-            <div className="text-xs font-black flex items-center gap-1.5">
+            <div className="text-xs sm:text-sm font-black flex items-center gap-1.5">
               <span className={currentTheme === 'brasil_heavy_duty' ? 'text-yellow-400 font-heading' : 'text-emerald-400 font-heading'}>
                 {currentTheme === 'brasil_heavy_duty' ? '⚡ BRK Brasil (Dark)' : '🌾 BRK Bolivia (Country)'}
               </span>
@@ -41,22 +41,22 @@ export const DemoSwitcher: React.FC = () => {
         </button>
 
         {/* Separator */}
-        <div className="hidden sm:block w-px h-7 bg-stone-800" />
+        <div className="hidden sm:block w-px h-8 bg-stone-800" />
 
         {/* Toggle Store <-> Admin */}
         <button
           onClick={() => setViewMode(viewMode === 'store' ? 'admin' : 'store')}
-          className="flex items-center gap-2.5 px-3 py-1.5 rounded-2xl bg-stone-900/90 hover:bg-stone-800 text-xs font-bold tracking-wide group transition active:scale-95 border border-stone-800"
+          className="flex items-center gap-3 px-3.5 py-2 rounded-2xl bg-stone-900/90 hover:bg-stone-800 text-xs font-bold tracking-wide group transition active:scale-95 border border-stone-800 btn-tactile hover-lift"
         >
-          <div className="w-6 h-6 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 text-black flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform font-black shadow">
-            <Eye className="w-3.5 h-3.5" />
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 text-black flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform font-black shadow-sm">
+            <Eye className="w-4.5 h-4.5 stroke-[2.2]" />
           </div>
 
           <div>
             <div className="text-[10px] text-stone-400 uppercase font-black tracking-wider">
               Modo Activo:
             </div>
-            <div className="text-xs text-white font-extrabold uppercase flex items-center gap-1">
+            <div className="text-xs sm:text-sm text-white font-extrabold uppercase flex items-center gap-1">
               <span>{viewMode === 'store' ? '🛍️ Tienda Pública' : '⚙️ ERP Admin'}</span>
             </div>
           </div>
@@ -66,10 +66,10 @@ export const DemoSwitcher: React.FC = () => {
         {pendingOrdersCount > 0 && viewMode === 'store' && (
           <button 
             onClick={() => setViewMode('admin')}
-            className="flex items-center gap-1.5 bg-red-600 hover:bg-red-500 text-white text-[10px] font-black px-3 py-1.5 rounded-2xl animate-bounce shadow-lg"
+            className="flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-xs font-black px-3.5 py-2 rounded-2xl animate-bounce shadow-lg btn-tactile hover-lift"
             title="Tienes pedidos de WhatsApp pendientes por aprobar"
           >
-            <ShieldAlert className="w-3.5 h-3.5" />
+            <ShieldAlert className="w-4.5 h-4.5 stroke-[2.2]" />
             <span>{pendingOrdersCount} Pedidos WhatsApp</span>
           </button>
         )}
