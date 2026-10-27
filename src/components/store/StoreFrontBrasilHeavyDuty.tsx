@@ -749,7 +749,11 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
           {/* Card 1: Camisa UV50+ Verde Agro */}
           <div className="bg-[#141916] rounded-3xl overflow-hidden border border-stone-800/90 shadow-2xl flex flex-col justify-between group hover:border-yellow-400 hover:glow-yellow transition-all duration-500">
             <div>
-              <div className="relative aspect-square overflow-hidden bg-stone-900">
+              <div 
+                onClick={() => setSelectedProduct(camisaVerde)}
+                className="relative aspect-square overflow-hidden bg-stone-900 cursor-pointer"
+                title="Toca para ver detalles, horma y seleccionar talla"
+              >
                 <img
                   src="/brk_agro_workers.jpg"
                   alt={t.card1Title}
@@ -772,7 +776,10 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
                 <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400">
                   {t.card1Sub}
                 </span>
-                <h3 className="font-black text-white text-lg font-heading leading-tight mt-1">
+                <h3 
+                  onClick={() => setSelectedProduct(camisaVerde)}
+                  className="font-black text-white text-lg font-heading leading-tight mt-1 cursor-pointer hover:text-yellow-400 transition"
+                >
                   {t.card1Title}
                 </h3>
                 <p className="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">
@@ -806,7 +813,11 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
           {/* Card 2: Botina de Trabalho Couro (Mud speckles) */}
           <div className="bg-[#141916] rounded-3xl overflow-hidden border border-stone-800/90 shadow-2xl flex flex-col justify-between group hover:border-yellow-400 hover:glow-yellow transition-all duration-500">
             <div>
-              <div className="relative aspect-square overflow-hidden bg-stone-900">
+              <div 
+                onClick={() => setSelectedProduct(botinaCouro)}
+                className="relative aspect-square overflow-hidden bg-stone-900 cursor-pointer"
+                title="Toca para ver detalles, horma y seleccionar talla"
+              >
                 <img
                   src="/brk_leather_boot.jpg"
                   alt={t.card2Title}
@@ -828,7 +839,10 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
                 <span className="text-[10px] font-black uppercase tracking-wider text-amber-500">
                   {t.card2Sub}
                 </span>
-                <h3 className="font-black text-white text-lg font-heading leading-tight mt-1">
+                <h3 
+                  onClick={() => setSelectedProduct(botinaCouro)}
+                  className="font-black text-white text-lg font-heading leading-tight mt-1 cursor-pointer hover:text-yellow-400 transition"
+                >
                   {t.card2Title}
                 </h3>
                 <p className="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">
@@ -862,7 +876,11 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
           {/* Card 3: Camisa UV50+ Verde Agro (Felipe R. Quote) */}
           <div className="bg-[#141916] rounded-3xl overflow-hidden border border-stone-800/90 shadow-2xl flex flex-col justify-between group hover:border-yellow-400 hover:glow-yellow transition-all duration-500">
             <div>
-              <div className="relative aspect-square overflow-hidden bg-stone-900">
+              <div 
+                onClick={() => setSelectedProduct(camisaVerde)}
+                className="relative aspect-square overflow-hidden bg-stone-900 cursor-pointer"
+                title="Toca para ver detalles, horma y seleccionar talla"
+              >
                 <img
                   src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80"
                   alt={t.card3Title}
@@ -884,7 +902,10 @@ export const StoreFrontBrasilHeavyDuty: React.FC<Props> = ({
                 <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400">
                   {t.card3Sub}
                 </span>
-                <h3 className="font-black text-white text-lg font-heading leading-tight mt-1">
+                <h3 
+                  onClick={() => setSelectedProduct(camisaVerde)}
+                  className="font-black text-white text-lg font-heading leading-tight mt-1 cursor-pointer hover:text-yellow-400 transition"
+                >
                   {t.card3Title}
                 </h3>
                 <p className="text-xs text-stone-400 mt-2 line-clamp-2 leading-relaxed">
