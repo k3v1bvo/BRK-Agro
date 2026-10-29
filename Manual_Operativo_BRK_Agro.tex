@@ -318,6 +318,71 @@ El acceso a la plataforma está optimizado para facilitar la demostración ejecu
 \end{enumerate}
 \end{propbox}
 
+\subsection{Protocolo de Registro y Alta de Nuevos Empleados}
+
+El sistema cuenta con un módulo de \textbf{Gestión de Personal y Control de Accesos} que permite al propietario dar de alta, suspender o gestionar a su equipo de trabajo sin requerir conocimientos técnicos:
+
+\begin{center}
+\begin{tikzpicture}
+    \node (e1) [flowstep] {1. Panel de Ajustes \\ \scriptsize Pestaña Marca \& Sistema};
+    \node (e2) [flowstep, below=0.7cm of e1] {2. Formulario de Alta \\ \scriptsize Botón «+ Registrar Empleado»};
+    \node (e3) [flowstep, below=0.7cm of e2] {3. Asignación de Rol \& PIN \\ \scriptsize Permisos (POS, Despacho, Bodega)};
+    \node (e4) [flowstep, below=0.7cm of e3, fill=AgroGreen!10] {4. Habilitación Inmediata \\ \scriptsize Firma de ventas y arqueos de caja};
+
+    \draw [flowarrow] (e1) -- (e2);
+    \draw [flowarrow] (e2) -- (e3);
+    \draw [flowarrow] (e3) -- (e4);
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{propbox}[Procedimiento Paso a Paso para Registrar un Nuevo Usuario]
+\begin{enumerate}
+    \item \textbf{Ubicación del Módulo:}
+    \begin{itemize}
+        \item Ingrese a la consola de administración en \url{https://brk-agro-iota.vercel.app/admin}.
+        \item Seleccione la pestaña \textbf{«Marca \& Sistema»} y desplácese hasta la sección \textbf{«Equipo de Trabajo \& Control de Accesos (Personal)»}.
+    \end{itemize}
+
+    \item \textbf{Apertura del Registro:}
+    \begin{itemize}
+        \item Presione el botón superior derecho \textbf{\texttt{[+ Registrar Empleado]}}.
+        \item Se desplegará la ventana modal de alta de personal.
+    \end{itemize}
+
+    \item \textbf{Diligenciamiento de Datos Requeridos:}
+    \begin{itemize}
+        \item \textbf{Nombre Completo:} Nombre y apellidos del colaborador (ej. \textit{Juan Carlos Mamani}).
+        \item \textbf{Cargo / Rol Operativo:} Seleccione entre:
+        \begin{itemize}
+            \item \textit{Cajero / POS:} Habilita cobros en mostrador físico, arqueo de caja y cambio de tallas.
+            \item \textit{Logística / Despacho:} Habilita aprobación de pedidos WhatsApp e impresión de rótulos de flota.
+            \item \textit{Bodega / Inventario:} Habilita control matricial de tallas y recepción de fábrica.
+            \item \textit{Gerente General:} Otorga control irrestricto sobre finanzas, precios y configuración.
+        \end{itemize}
+        \item \textbf{PIN de Seguridad (4 dígitos):} Código numérico confidencial (ej. \texttt{2026}) con el que el colaborador valida sus operaciones.
+        \item \textbf{Celular / WhatsApp:} Número de contacto para coordinación operativa.
+        \item \textbf{Correo Electrónico (Opcional):} Dirección de correo corporativo o personal.
+    \end{itemize}
+
+    \item \textbf{Guardado y Confirmación:}
+    \begin{itemize}
+        \item Presione \textbf{«Guardar Empleado»}. El sistema le asigna un identificador único (\texttt{emp-XXXX}) y lo incorpora inmediatamente a la matriz de personal.
+    \end{itemize}
+
+    \item \textbf{Gestión de Estados (Activar / Suspender / Eliminar):}
+    \begin{itemize}
+        \item \textbf{Suspensión Temporal:} El ícono de verificación permite alternar entre estado \textit{Activo} e \textit{Inactivo} sin borrar el historial contable del empleado.
+        \item \textbf{Baja Definitiva:} El ícono de papelera permite eliminar el perfil cuando un colaborador ya no forma parte de la empresa.
+    \end{itemize}
+\end{enumerate}
+\end{propbox}
+
+\begin{highlightbox}
+\textbf{Trazabilidad y Auditoría Contable:} Cada vez que un cajero realiza una venta en mostrador, efectúa un arqueo de caja chica o emite un cambio de talla express, el sistema asienta su nombre y rol en los registros de auditoría (\texttt{sellerName}, \texttt{closedBy}), garantizando que el propietario sepa con exactitud quién procesó cada boliviano en la tienda.
+\end{highlightbox}
+
 \subsection{Infraestructura de Datos y Servidor Cloud}
 El sistema se encuentra interconectado a su clúster de base de datos corporativo en la nube:
 \begin{itemize}
