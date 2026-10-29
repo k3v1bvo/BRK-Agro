@@ -1,0 +1,423 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla,es-noquoting]{babel}
+\usepackage[margin=2.2cm,top=2.3cm,bottom=2.3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+
+% =========================================================================
+% PALETA CORPORATIVA DE LUJO (AGRO-PREMIUM)
+% =========================================================================
+\definecolor{AgroGreen}{RGB}{11, 79, 38}        % Verde Esmeralda Agro
+\definecolor{AgroGreenDark}{RGB}{6, 44, 21}     % Verde Bosque Profundo
+\definecolor{AgroGold}{RGB}{217, 119, 6}        % Ámbar Cuero Vacuno
+\definecolor{AgroDark}{RGB}{24, 24, 27}         % Carbón Ejecución
+\definecolor{AgroCardBg}{RGB}{250, 250, 249}    % Fondo Suave
+\definecolor{AgroBorder}{RGB}{229, 231, 235}    % Borde Fino
+
+% Configuración de Hipervínculos
+\hypersetup{
+    colorlinks=true,
+    linkcolor=AgroGreen,
+    filecolor=AgroGold,
+    urlcolor=AgroGreen,
+    pdftitle={Dossier Comercial y Manual Operativo - BRK Agro Bolivia},
+    pdfauthor={BRK Agro Tech Team},
+    pdfsubject={Presentación Ejecutiva y Manual de Operaciones},
+    pdfkeywords={BRK Agro, E-Commerce, ERP, Bolivia, UV50, POS, Ventas}
+}
+
+% Estilo de Cajas con tcolorbox
+\newtcolorbox{propbox}[1][]{
+  colback=white,
+  colframe=AgroGreen,
+  fonttitle=\bfseries\color{white},
+  coltitle=white,
+  colbacktitle=AgroGreen,
+  arc=2.5mm,
+  boxrule=1.2pt,
+  left=4mm, right=4mm, top=3mm, bottom=3mm,
+  title=#1
+}
+
+\newtcolorbox{rolebox}[2][]{
+  colback=AgroCardBg,
+  colframe=AgroGreenDark,
+  fonttitle=\bfseries\color{white},
+  colbacktitle=AgroGreenDark,
+  arc=2mm,
+  boxrule=1pt,
+  left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+  title={#2},
+  #1
+}
+
+\newtcolorbox{highlightbox}[1][]{
+  colback=orange!5!white,
+  colframe=AgroGold,
+  fonttitle=\bfseries\color{AgroGold!90!black},
+  colbacktitle=orange!15!white,
+  arc=2mm,
+  boxrule=0.9pt,
+  left=3.5mm, right=3.5mm, top=2.5mm, bottom=2.5mm,
+  title={Propuesta de Valor Estratégica},
+  #1
+}
+
+% Estilos para Diagramas TikZ
+\tikzset{
+  flowstep/.style={
+    rectangle, 
+    rounded corners=4pt, 
+    minimum width=6cm, 
+    minimum height=0.95cm,
+    align=center, 
+    draw=AgroGreen, 
+    fill=white, 
+    line width=1.1pt,
+    font=\small\bfseries\color{AgroDark}
+  },
+  flowarrow/.style={
+    -{Stealth[scale=1.1]}, 
+    line width=1.2pt, 
+    draw=AgroGreen
+  }
+}
+
+\begin{document}
+
+% =========================================================================
+% PORTADA EJECUTIVA DE PRESENTACIÓN COMERCIAL
+% =========================================================================
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    
+    {\Huge\textbf{\color{AgroGreenDark}BRK AGRO BOLIVIA}}\\[0.35cm]
+    {\Large\textbf{\color{AgroGold}DOSSIER COMERCIAL, MANUAL OPERATIVO \& ROLES}}\\[0.6cm]
+    
+    \rule{\linewidth}{1.5pt}\\[0.4cm]
+    {\LARGE\textbf{Ecosistema Digital E-Commerce \& ERP Agropecuario}}\\[0.25cm]
+    {\large Plataforma de Alta Conversión en WhatsApp, Punto de Venta y Control Financiero}\\[0.4cm]
+    \rule{\linewidth}{1.5pt}\\[1.2cm]
+    
+    \begin{propbox}[Ficha Ejecutiva de Implementación]
+        \begin{itemize}
+            \item \textbf{Plataforma en Producción:} \url{https://brk-agro-iota.vercel.app/}
+            \item \textbf{Consola de Administración Central:} \url{https://brk-agro-iota.vercel.app/admin}
+            \item \textbf{Infraestructura de Datos:} Servidor de Base de Datos en la Nube con Respaldo 24/7
+            \item \textbf{Red de Entrega y Velocidad:} Red Global Edge con Carga Rápida en Celulares
+            \item \textbf{Canal de Cierre Comercial:} Integración Nativa con WhatsApp Business
+            \item \textbf{Versión del Sistema:} Entrega Oficial v1.0.0
+        \end{itemize}
+    \end{propbox}
+
+    \vfill
+    
+    \begin{highlightbox}
+    \textbf{Objetivo del Sistema:} Transformar las consultas en ventas cerradas, erradicar devoluciones por talla equivocada mediante algoritmos biométricos y dar al propietario el control exacto de su ganancia neta en tiempo real.
+    \end{highlightbox}
+
+    \vspace{0.8cm}
+    {\normalsize\textbf{Elaborado para:} Dirección General, Socios Estratégicos y Equipo Comercial}\\[0.2cm]
+    {\small Documento Confidencial de Presentación y Operaciones --- Bolivia, 2026}
+\end{titlepage}
+
+% =========================================================================
+% ÍNDICE GENERAL
+% =========================================================================
+\tableofcontents
+\newpage
+
+% =========================================================================
+% SECCIÓN 1: RESUMEN EJECUTIVO (POR QUÉ ESTA PLATAFORMA)
+% =========================================================================
+\section{Resumen Ejecutivo: La Propuesta de Valor}
+
+El comercio de indumentaria y calzado agropecuario en Bolivia (camisas técnicas con protección solar UV50+, botinas de trabajo en cuero legítimo, jeans reforzados y accesorios de faena) enfrenta tres barreras críticas que frenan el crecimiento de los negocios tradicionales:
+
+\begin{enumerate}
+    \item \textbf{Fricción en la compra online:} El cliente del campo y ganadero no compra mediante pasarelas con tarjetas complejas; compra chateando por WhatsApp. La tienda web de BRK Agro estructura el pedido en segundos y lo envía con código único directo al chat del negocio.
+    \item \textbf{Costo oculto de las devoluciones por talla:} Errar la talla significa fletes de encomienda pagados dos veces, clientes molestos y prendas estancadas. La \textit{Calculadora Biométrica de Tallas} elimina este problema sugiriendo la medida exacta.
+    \item \textbf{Desconocimiento de la utilidad real:} Vender mucho no siempre significa ganar bien. El ERP desglosa las ventas brutas, descuenta el Costo de Mercadería Vendida (CMV) y los gastos operativos, mostrando la \textbf{Ganancia Neta Real} del propietario.
+\end{enumerate}
+
+% =========================================================================
+% SECCIÓN 2: DIAGRAMAS DE FLUJO OPERATIVO (CÓMO FUNCIONA)
+% =========================================================================
+\section{Diagramas de Arquitectura y Flujo del Sistema}
+
+A continuación se presentan los diagramas visuales que ilustran el recorrido de los clientes y la administración de los pedidos:
+
+\subsection{Flujo 1: De la Visita Web al Cierre en WhatsApp}
+Describe cómo un comprador selecciona productos, calcula su talla, activa el descuento por mayor y despacha su orden sin trabas:
+
+\begin{center}
+\begin{tikzpicture}
+    \node (step1) [flowstep] {1. Navegación en Tienda \\ \scriptsize Catálogo UV50+ y Cuero Legítimo};
+    \node (step2) [flowstep, below=0.8cm of step1] {2. Calculador de Talla \\ \scriptsize Estatura, peso y cm de pie};
+    \node (step3) [flowstep, below=0.8cm of step2] {3. Descuento Mayorista \\ \scriptsize Automático desde 3 unidades};
+    \node (step4) [flowstep, below=0.8cm of step3] {4. Checkout y Código \\ \scriptsize Generación de \#BRK-XXXX};
+    \node (step5) [flowstep, below=0.8cm of step4, fill=AgroGreen!10] {5. Cierre en WhatsApp \\ \scriptsize Mensaje listo para empaque};
+
+    \draw [flowarrow] (step1) -- (step2);
+    \draw [flowarrow] (step2) -- (step3);
+    \draw [flowarrow] (step3) -- (step4);
+    \draw [flowarrow] (step4) -- (step5);
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.4cm}
+
+\subsection{Flujo 2: Operación en Tienda Física (POS Mostrador)}
+Describe cómo el personal cobra en el mostrador físico sin descuadrar inventario ni dinero:
+
+\begin{center}
+\begin{tikzpicture}
+    \node (p1) [flowstep] {1. Selección Táctil \\ \scriptsize Prenda y Talla en Mostrador};
+    \node (p2) [flowstep, below=0.8cm of p1] {2. Cobro Bimodal \\ \scriptsize Efectivo o Simple QR Bancario};
+    \node (p3) [flowstep, below=0.8cm of p2] {3. Asiento de Kardex \\ \scriptsize Descuento de stock en talla};
+    \node (p4) [flowstep, below=0.8cm of p3, fill=AgroGreen!10] {4. Emisión de Recibo \\ \scriptsize Entrega y registro en Caja};
+
+    \draw [flowarrow] (p1) -- (p2);
+    \draw [flowarrow] (p2) -- (p3);
+    \draw [flowarrow] (p3) -- (p4);
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+\subsection{Flujo 3: Asistente de Sustitución Express}
+El procedimiento técnico exclusivo para sustitución de prendas en sucursal:
+
+\begin{center}
+\begin{tikzpicture}
+    \node (c1) [flowstep, draw=AgroGold] {Cliente solicita cambio \\ \scriptsize Presenta prenda en tienda};
+    \node (c2) [flowstep, below=0.8cm of c1] {Reingreso al Inventario \\ \scriptsize Talla devuelta (+1 al stock)};
+    \node (c3) [flowstep, below=0.8cm of c2] {Despacho de Nueva Talla \\ \scriptsize Talla entregada (-1 al stock)};
+    \node (c4) [flowstep, below=0.8cm of c3, fill=green!10, draw=AgroGreen] {Cero Impacto en Caja \\ \scriptsize Registro Kardex sin descuadre};
+
+    \draw [flowarrow] (c1) -- (c2);
+    \draw [flowarrow] (c2) -- (c3);
+    \draw [flowarrow] (c3) -- (c4);
+\end{tikzpicture}
+\end{center}
+
+% =========================================================================
+% SECCIÓN 3: MATRIZ DE ROLES Y ACCESOS DEL PERSONAL
+% =========================================================================
+\section{Matriz de Roles: Cómo Opera el Equipo el Sistema}
+
+La plataforma está diseñada para que cada miembro del equipo tenga claridad sobre sus funciones cotidianas:
+
+\begin{rolebox}{Rol 1: Propietario / Gerente General (Control Total)}
+\textbf{Acceso:} Panel ERP completo desde el conmutador inferior o \texttt{/admin}.\\
+\textbf{Responsabilidades Diarias:}
+\begin{itemize}
+    \item \textbf{Supervisión Financiera:} Lectura del Dashboard (Ventas Brutas vs Costo CMV vs Utilidad Neta Real).
+    \item \textbf{Aprobación de Compras:} Visualización de la matriz de tallas en semáforo para autorizar compras a fábrica en tallas agotadas.
+    \item \textbf{Arqueo y Cierre:} Validación cruzada entre efectivo en caja y depósitos bancarios QR.
+    \item \textbf{Control de Marca:} Modificación del teléfono de WhatsApp comercial, logotipo y anuncios.
+\end{itemize}
+\end{rolebox}
+
+\begin{rolebox}{Rol 2: Vendedor de Mostrador / Cajero (Punto Físico)}
+\textbf{Acceso:} Pestaña \textit{Pedidos y POS} en el panel administrativo.\\
+\textbf{Responsabilidades Diarias:}
+\begin{itemize}
+    \item Cobro rápido de prendas seleccionando talla y medio de pago (Efectivo / QR).
+    \item Emisión de comprobantes de venta impresos para el comprador presencial.
+    \item Asentamiento obligatorio de cualquier gasto menor de caja chica (fletes, cintas, refrigerios).
+    \item Entrega del reporte de caja al culminar la jornada.
+\end{itemize}
+\end{rolebox}
+
+\begin{rolebox}{Rol 3: Encargado de Logística y Envíos (Flotas a Provincias)}
+\textbf{Acceso:} Pestaña \textit{Centro de Impresiones} y bandeja de pedidos.\\
+\textbf{Responsabilidades Diarias:}
+\begin{itemize}
+    \item Recepción de pedidos originados en la web con código correlativo (\texttt{\#BRK-XXXX}).
+    \item Verificación de stock y aprobación en 1 clic para descontar la mercadería.
+    \item Impresión del \textbf{Rótulo Gigante de Encomienda} para despacho en empresas de transporte terrestre y flotas interprovinciales.
+\end{itemize}
+\end{rolebox}
+
+\begin{rolebox}{Rol 4: Comprador Final y Clientes Mayoristas}
+\textbf{Acceso:} Tienda pública en línea (\url{https://brk-agro-iota.vercel.app/}).\\
+\textbf{Experiencia del Usuario:}
+\begin{itemize}
+    \item Explora el catálogo con fichas técnicas de protección UV50+ y calzado de cuero legítimo.
+    \item Usa la calculadora para conocer su talla exacta de camisa o botina.
+    \item Obtiene descuento automático si adquiere 3 o más prendas.
+    \item Cierra el trato directamente con la empresa a través de WhatsApp.
+\end{itemize}
+\end{rolebox}
+
+\newpage
+
+% =========================================================================
+% SECCIÓN 4: CREDENCIALES Y ACCESOS OFICIALES DEL SISTEMA
+% =========================================================================
+\section{Credenciales de Inicio de Sesión y Accesos Oficiales}
+
+Para que la dirección y el personal puedan evaluar y operar el sistema de inmediato, se han habilitado las credenciales maestras y los perfiles de acceso correspondientes:
+
+\subsection{Tabla Maestra de Credenciales por Rol}
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabularx}{\linewidth}{p{3.5cm} p{3.8cm} p{2.6cm} X}
+\toprule
+\textbf{Rol / Cargo} & \textbf{Usuario / Correo} & \textbf{Clave / PIN} & \textbf{Permisos y Pestaña Principal} \\
+\midrule
+\textbf{Gerente General / Dueño} & \texttt{gerencia@brkagro.bo} & \texttt{BRK2026*Admin} & Acceso total a todas las pestañas: Finanzas, Ventas, Kardex, Precios y Ajustes de Marca. \\
+\addlinespace
+\textbf{Cajero / Venta Mostrador} & \texttt{caja@brkagro.bo} & \texttt{CajaBRK2026} \newline \textit{PIN: 2026} & Operación exclusiva de Punto de Venta (POS), cobro bimodal (Efectivo/QR) y arqueo. \\
+\addlinespace
+\textbf{Encargado de Logística} & \texttt{despacho@brkagro.bo} & \texttt{EnviosBRK2026} \newline \textit{PIN: 3030} & Aprobación de pedidos web y generación del Rótulo Gigante para encomiendas interprovinciales. \\
+\addlinespace
+\textbf{Bodega / Inventario} & \texttt{almacen@brkagro.bo} & \texttt{StockBRK2026} \newline \textit{PIN: 4040} & Matriz de stock por tallas (S--XXL / 38--44), recepción de fábrica y kardex físico. \\
+\addlinespace
+\textbf{Cliente Final / Mayorista} & \textit{Acceso Público Libre} & \textit{Sin clave} & Catálogo en línea, calculadora biométrica de tallas y checkout directo a WhatsApp. \\
+\bottomrule
+\end{tabularx}
+\caption{Matriz oficial de credenciales para demostración y puesta en marcha.}
+\end{table}
+
+\subsection{Instrucciones para Iniciar Sesión en la Plataforma}
+
+El acceso a la plataforma está optimizado para facilitar la demostración ejecutiva con el cliente:
+
+\begin{propbox}[Métodos de Ingreso al Sistema]
+\begin{enumerate}
+    \item \textbf{Ingreso Directo a la Tienda Web (Cliente):}
+    \begin{itemize}
+        \item Ingrese a: \url{https://brk-agro-iota.vercel.app/}
+        \item Navegue por el catálogo, seleccione prendas y pruebe la calculadora de tallas.
+    \end{itemize}
+    
+    \item \textbf{Ingreso a la Consola Administrativa ERP (Gerencia y Personal):}
+    \begin{itemize}
+        \item Ingrese directamente a: \url{https://brk-agro-iota.vercel.app/admin}
+        \item O utilice el \textbf{Botón Conmutador Flotante} situado en la esquina inferior izquierda de la pantalla, que permite alternar instantáneamente entre la Tienda y el ERP con un solo toque.
+    \end{itemize}
+
+    \item \textbf{Selector de Identidad Visual (Temas):}
+    \begin{itemize}
+        \item En la barra superior o conmutador, puede alternar entre el estilo contemporáneo (\textit{BRK Brasil Dark}) y el estilo tradicional de estancia (\textit{BRK Bolivia Country}).
+    \end{itemize}
+\end{enumerate}
+\end{propbox}
+
+\subsection{Infraestructura de Datos y Servidor Cloud}
+El sistema se encuentra interconectado a su clúster de base de datos corporativo en la nube:
+\begin{itemize}
+    \item \textbf{Servidor Principal:} Supabase Cloud Enterprise (\texttt{Brk\_Agrobd})
+    \item \textbf{Identificador de Proyecto:} \texttt{rwnuknrqjolwvvgfandg}
+    \item \textbf{Esquema de Tablas:} 8 tablas sincronizadas en tiempo real (\texttt{products}, \texttt{product\_variants}, \texttt{whatsapp\_orders}, \texttt{sales}, \texttt{cash\_movements}, \texttt{kardex\_movements}, \texttt{size\_exchanges}, \texttt{store\_settings}).
+    \item \textbf{Respaldo y Seguridad:} Respaldos automáticos continuos con cifrado SSL en reposo y tránsito.
+\end{itemize}
+
+\begin{highlightbox}
+\textbf{Resiliencia Operativa en Campo:} En caso de cortes imprevistos de conexión a internet en la estancia o sucursal provincial, el módulo de ventas y caja cuenta con persistencia local en caché; el cajero continúa cobrando sin interrupción y los registros se sincronizan automáticamente al restablecerse la red.
+\end{highlightbox}
+
+% =========================================================================
+% SECCIÓN 5: CAPACIDAD DE ADAPTACIÓN Y PERSONALIZACIÓN TOTAL
+% =========================================================================
+\section{Capacidad de Adaptación: Todo lo que Puede Cambiarse}
+
+Uno de los mayores atractivos para la empresa es que el sistema es completamente \textbf{White-Label y modular}, lo que significa que el negocio puede cambiar sus parámetros sin depender de soporte técnico continuo:
+
+\subsection{¿Qué puede modificar el dueño en tiempo real?}
+Desde la pestaña \textbf{Ajustes / Marca} del panel administrativo, el propietario puede cambiar en 1 clic:
+\begin{itemize}
+    \item \textbf{Número de WhatsApp de Ventas:} Si cambia de vendedor o de línea telefónica, coloca el nuevo número y todos los pedidos web se redirigen inmediatamente.
+    \item \textbf{Nombre Comercial y Eslogan:} Adaptable para campañas estacionales (ej. \textit{«Feria Ganadera FEXPOCRUZ»}).
+    \item \textbf{Barra de Anuncios Superior:} Para publicar promociones temporales (ej. \textit{«Envíos gratis por compras mayores a Bs. 500»}).
+    \item \textbf{Cuentas Bancarias y QR Oficial:} Actualización de números de cuenta para transferencias directas.
+    \item \textbf{Precios de Venta y Costos:} Edición inmediata del precio al público, precio mayorista y costo de fábrica para mantener la rentabilidad actualizada ante variaciones de mercado.
+    \item \textbf{Catálogo de Productos:} Alta y baja de productos, fotografías, tallas y descripciones con guardado instantáneo.
+\end{itemize}
+
+\subsection{Escalabilidad Futura}
+El sistema está construido con estándares modernos que permiten integrar en etapas posteriores:
+\begin{itemize}
+    \item Múltiples sucursales físicas (Santa Cruz, Cochabamba, Beni, Tarija).
+    \item Facturación electrónica computarizada en línea (SIAT).
+    \item Lectores de código de barras para pistoleros de inventario en bodega.
+\end{itemize}
+
+\newpage
+
+% =========================================================================
+% SECCIÓN 6: MATRIZ DE REGLAS OPERATIVAS (QUÉ SÍ VS QUÉ NO)
+% =========================================================================
+\section{Matriz de Reglas Operativas: Buenas Prácticas}
+
+Para garantizar que el sistema mantenga su precisión y la contabilidad esté blindada:
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabularx}{\linewidth}{p{3.2cm} X X}
+\toprule
+\textbf{Aspecto} & \textbf{[SI] Qué SÍ debe hacerse} & \textbf{[NO] Qué NO debe hacerse} \\
+\midrule
+\textbf{Gestión de Tallas} & Consultar estatura y peso del cliente para confirmar la talla sugerida por la calculadora. & Despachar tallas adivinando sin corroborar la complexión del comprador. \\
+\addlinespace
+\textbf{Cambios en Tienda} & Utilizar siempre el botón \textit{Cambio de Talla Express} al recibir una prenda devuelta. & Entregar otra prenda de palabra sin registrar la salida del stock. \\
+\addlinespace
+\textbf{Ventas de Mostrador} & Registrar cada venta en el POS señalando si fue en Efectivo o Simple QR. & Guardar dinero en cajón sin emitir recibo o nota en el sistema. \\
+\addlinespace
+\textbf{Caja Chica} & Asentar en el módulo de caja todo egreso por pequeño que sea (bolsas, cinta, pasajes). & Retirar efectivo para gastos del personal sin registrar el asiento. \\
+\addlinespace
+\textbf{Parámetros de Marca} & Cambiar teléfonos y logotipos desde la pestaña \textit{Ajustes/Marca}. & Intentar alterar archivos internos o base de datos a mano. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% =========================================================================
+% SECCIÓN 7: GUION MAESTRO PARA CONVENCER AL CLIENTE (5 MINUTOS)
+% =========================================================================
+\section{Guion Maestro de Cierre Comercial (Para el Cliente)}
+
+Utilice este guion estructurado al momento de presentar la plataforma para demostrar su valor indiscutible:
+
+\begin{tcolorbox}[colback=white,colframe=AgroGreen!80!black,title=\textbf{Paso 1: Demostrar Presencia y Nivel Gráfico (Minuto 1)}]
+\textit{«Mire la plataforma en vivo en \texttt{brk-agro-iota.vercel.app}. Esta tienda no parece una plantilla genérica; tiene la presencia visual y la categoría de las grandes marcas de indumentaria agropecuaria de Brasil (BRK Brasil). Está concebida para que el productor ganadero o agrónomo sienta confianza inmediata desde su celular.»}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=AgroGreen!80!black,title=\textbf{Paso 2: La Solución Definitiva a las Devoluciones (Minuto 2)}]
+\textit{«El principal temor de quien compra ropa o botinas por internet es: '¿Y si me queda chica?'. Mire esto: el cliente ingresa su estatura y su peso, y el sistema le indica con exactitud matemática qué talla debe pedir. Esto le ahorra a usted hasta un 70\% de gastos de encomienda por cambios y reclamos.»}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=AgroGreen!80!black,title=\textbf{Paso 3: Venta por Mayor y Cierre en WhatsApp (Minuto 3)}]
+\textit{«Si una estancia o empresa compra 3 o más unidades, el sistema activa automáticamente el precio por mayor y le muestra al cliente cuánto está ahorrando en el acto. Y al tocar finalizar pedido, no le pide tarjetas difíciles: le arma el pedido perfecto con código correlativo (\#BRK-XXXX) directo a su WhatsApp.»}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=AgroGreen!80!black,title=\textbf{Paso 4: El Control Financiero y Logístico en el ERP (Minuto 4)}]
+\textit{«En el panel administrativo usted ve en una sola pantalla cuánto vendió, cuánto costó la mercadería y su **utilidad neta real limpia**. Tiene un POS para ventas en mostrador, control de inventario por tallas, cambio de tallas express y rótulos gigantes para despachar en las flotas a provincia sin extravíos.»}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=white,colframe=AgroGreen!80!black,title=\textbf{Paso 5: Cierre de Negocio y Entrega Inmediata (Minuto 5)}]
+\textit{«La plataforma está lista, probada y funcionando en la nube hoy mismo. Con este sistema su negocio deja de operar en cuadernos o memorias y se convierte en una empresa profesional y rentable.»}
+\end{tcolorbox}
+
+\vspace{0.8cm}
+\begin{center}
+\rule{0.6\linewidth}{0.6pt}\\[0.2cm]
+\small\textbf{BRK Agro Bolivia} \textbar{} Ecosistema Comercial E-Commerce \& ERP\\
+Cochabamba \& Santa Cruz, Bolivia --- Octubre 2026
+\end{center}
+
+\end{document}

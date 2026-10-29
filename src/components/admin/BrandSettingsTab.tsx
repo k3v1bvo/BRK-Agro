@@ -12,10 +12,17 @@ import {
   Sparkles,
   Key,
   MapPin,
-  FileCode
+  FileCode,
+  Users,
+  UserPlus,
+  Shield,
+  Lock,
+  Mail,
+  UserCheck
 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext';
 import { isSupabaseConfigured } from '../../services/storage';
+import { Employee } from '../../types';
 
 export const BrandSettingsTab: React.FC = () => {
   const { settings, updateSettings, resetToDemo, clearAll } = useStore();
@@ -37,6 +44,66 @@ export const BrandSettingsTab: React.FC = () => {
   const [imgbbApiKey, setImgbbApiKey] = useState(settings.imgbbApiKey || '');
   const [address, setAddress] = useState(settings.address);
   const [savedSuccess, setSavedSuccess] = useState(false);
+
+  const defaultEmployees: Employee[] = [
+    { id: 'emp-01', name: 'Carlos Méndez', role: 'Gerente General', pin: '1985', email: 'gerencia@brkagro.bo', phone: '+591 78541236', active: true, createdAt: '2026-01-15' },
+    { id: 'emp-02', name: 'María Eugenia Rojas', role: 'Cajero / POS', pin: '2026', email: 'caja@brkagro.bo', phone: '+591 71234567', active: true, createdAt: '2026-02-01' },
+    { id: 'emp-03', name: 'Roberto Siles', role: 'Logística / Despacho', pin: '3030', email: 'despacho@brkagro.bo', phone: '+591 79876543', active: true, createdAt: '2026-02-10' },
+    { id: 'emp-04', name: 'Jorge Vaca', role: 'Bodega / Inventario', pin: '4040', email: 'almacen@brkagro.bo', phone: '+591 74561234', active: true, createdAt: '2026-03-01' },
+  ];
+
+  const [employees, setEmployees] = useState<Employee[]>(settings.employees || defaultEmployees);
+  const [isNewEmpModalOpen, setIsNewEmpModalOpen] = useState(false);
+  const [newEmpName, setNewEmpName] = useState('');
+  const [newEmpRole, setNewEmpRole] = useState<Employee['role']>('Cajero / POS');
+  const [newEmpPin, setNewEmpPin] = useState('');
+  const [newEmpPhone, setNewEmpPhone] = useState('');
+  const [newEmpEmail, setNewEmpEmail] = useState('');
+
+  useEffect(() => {
+    if (settings.employees && settings.employees.length > 0) {
+      setEmployees(settings.employees);
+    }
+  }, [settings.employees]);
+
+  const handleAddEmployee = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newEmpName.trim()) return;
+    const newEmp: Employee = {
+      id: `emp-${Date.now().toString().slice(-4)}`,
+      name: newEmpName.trim(),
+      role: newEmpRole,
+      pin: newEmpPin.trim() || '1234',
+      phone: newEmpPhone.trim() || undefined,
+      email: newEmpEmail.trim() || undefined,
+      active: true,
+      createdAt: new Date().toISOString().split('T')[0]
+    };
+    const updated = [...employees, newEmp];
+    setEmployees(updated);
+    updateSettings({ employees: updated });
+    setIsNewEmpModalOpen(false);
+    setNewEmpName('');
+    setNewEmpPin('');
+    setNewEmpPhone('');
+    setNewEmpEmail('');
+    setSavedSuccess(true);
+    setTimeout(() => setSavedSuccess(false), 2000);
+  };
+
+  const handleToggleEmployeeActive = (id: string) => {
+    const updated = employees.map(emp => emp.id === id ? { ...emp, active: !emp.active } : emp);
+    setEmployees(updated);
+    updateSettings({ employees: updated });
+  };
+
+  const handleDeleteEmployee = (id: string) => {
+    if (confirm('¿Eliminar este empleado del sistema?')) {
+      const updated = employees.filter(emp => emp.id !== id);
+      setEmployees(updated);
+      updateSettings({ employees: updated });
+    }
+  };
 
   // Theme presets
   const colorPresets = [
@@ -410,6 +477,207 @@ export const BrandSettingsTab: React.FC = () => {
         </div>
 
       </form>
+
+      {/* Employee & Staff Access Management Card */}
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-stone-100 pb-4">
+          <div>
+            <h3 className="text-sm font-extrabold text-stone-900 uppercase tracking-wide flex items-center gap-2">
+              <Users className="w-5 h-5 text-amber-600" />
+              <span>Equipo de Trabajo & Control de Accesos (Personal)</span>
+            </h3>
+            <p className="text-xs text-stone-500 mt-1">
+              Administre cajeros, despachadores y personal de almacén con sus PINs de acceso para inicio de sesión y arqueos.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsNewEmpModalOpen(true)}
+            className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider bg-stone-900 text-amber-400 hover:bg-black shadow-sm transition"
+          >
+            <UserPlus className="w-4 h-4" />
+            <span>+ Registrar Empleado</span>
+          </button>
+        </div>
+
+        {/* Employees Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {employees.map((emp) => {
+            const roleColor = 
+              emp.role === 'Gerente General' ? 'bg-purple-100 text-purple-800 border-purple-200' :
+              emp.role === 'Cajero / POS' ? 'bg-emerald-100 text-emerald-800 border-emerald-200' :
+              emp.role === 'Logística / Despacho' ? 'bg-blue-100 text-blue-800 border-blue-200' :
+              'bg-amber-100 text-amber-800 border-amber-200';
+
+            return (
+              <div 
+                key={emp.id} 
+                className={`p-4 rounded-xl border transition flex flex-col justify-between ${
+                  emp.active 
+                    ? 'bg-stone-50 border-stone-200' 
+                    : 'bg-stone-100/60 border-stone-200 opacity-60'
+                }`}
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-stone-200 flex items-center justify-center font-black text-stone-700 text-sm">
+                      {emp.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
+                    </div>
+                    <div>
+                      <div className="font-extrabold text-stone-900 text-sm flex items-center gap-2">
+                        {emp.name}
+                        {emp.active ? (
+                          <span className="w-2 h-2 rounded-full bg-emerald-500" title="Activo" />
+                        ) : (
+                          <span className="w-2 h-2 rounded-full bg-stone-400" title="Inactivo" />
+                        )}
+                      </div>
+                      <span className={`inline-block px-2 py-0.5 mt-1 rounded text-[10px] font-bold border ${roleColor}`}>
+                        {emp.role}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={() => handleToggleEmployeeActive(emp.id)}
+                      className={`p-1.5 rounded-lg text-xs font-bold transition ${
+                        emp.active ? 'text-stone-500 hover:text-stone-800 hover:bg-stone-200' : 'text-emerald-600 hover:bg-emerald-50'
+                      }`}
+                      title={emp.active ? 'Desactivar Empleado' : 'Activar Empleado'}
+                    >
+                      <UserCheck className="w-4 h-4" />
+                    </button>
+                    {emp.role !== 'Gerente General' && (
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteEmployee(emp.id)}
+                        className="p-1.5 rounded-lg text-stone-400 hover:text-red-600 hover:bg-red-50 transition"
+                        title="Eliminar Empleado"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-3 pt-3 border-t border-stone-200/60 flex items-center justify-between text-[11px] text-stone-600">
+                  <div className="flex items-center gap-1 font-mono font-bold bg-white px-2 py-1 rounded border border-stone-200">
+                    <Lock className="w-3 h-3 text-amber-600" />
+                    <span>PIN: {emp.pin}</span>
+                  </div>
+                  {emp.phone && (
+                    <span className="text-stone-500">{emp.phone}</span>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Modal: Agregar Nuevo Empleado */}
+        {isNewEmpModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-stone-200 space-y-4 animate-in fade-in zoom-in-95">
+              <div className="flex items-center justify-between border-b border-stone-100 pb-3">
+                <h4 className="font-extrabold text-stone-900 text-sm flex items-center gap-2">
+                  <UserPlus className="w-4 h-4 text-amber-600" />
+                  <span>Registrar Nuevo Miembro del Equipo</span>
+                </h4>
+                <button
+                  type="button"
+                  onClick={() => setIsNewEmpModalOpen(false)}
+                  className="text-stone-400 hover:text-stone-700 text-lg font-bold"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <form onSubmit={handleAddEmployee} className="space-y-3">
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 mb-1">Nombre Completo *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Ej. Juan Pérez Cabrera"
+                    value={newEmpName}
+                    onChange={(e) => setNewEmpName(e.target.value)}
+                    className="w-full p-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 mb-1">Cargo / Rol Operativo *</label>
+                  <select
+                    value={newEmpRole}
+                    onChange={(e) => setNewEmpRole(e.target.value as Employee['role'])}
+                    className="w-full p-2.5 rounded-xl border border-stone-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  >
+                    <option value="Cajero / POS">Cajero / POS (Mostrador & Cobros)</option>
+                    <option value="Logística / Despacho">Logística / Despacho (Encomiendas)</option>
+                    <option value="Bodega / Inventario">Bodega / Inventario (Kardex y Tallas)</option>
+                    <option value="Gerente General">Gerente General (Control Total)</option>
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-bold text-stone-700 mb-1">PIN de Acceso (4 dígitos) *</label>
+                    <input
+                      type="text"
+                      required
+                      maxLength={6}
+                      placeholder="Ej. 2026"
+                      value={newEmpPin}
+                      onChange={(e) => setNewEmpPin(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-stone-300 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-stone-700 mb-1">Celular / WhatsApp</label>
+                    <input
+                      type="text"
+                      placeholder="Ej. +591 70012345"
+                      value={newEmpPhone}
+                      onChange={(e) => setNewEmpPhone(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-stone-700 mb-1">Correo Electrónico (Opcional)</label>
+                  <input
+                    type="email"
+                    placeholder="Ej. juan@brkagro.bo"
+                    value={newEmpEmail}
+                    onChange={(e) => setNewEmpEmail(e.target.value)}
+                    className="w-full p-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  />
+                </div>
+
+                <div className="flex items-center justify-end gap-2 pt-3 border-t border-stone-100">
+                  <button
+                    type="button"
+                    onClick={() => setIsNewEmpModalOpen(false)}
+                    className="px-4 py-2 rounded-xl text-xs font-bold text-stone-600 hover:bg-stone-100 transition"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider bg-amber-600 hover:bg-amber-700 text-white shadow transition"
+                  >
+                    Guardar Empleado
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Cloud & Database Status Card */}
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 space-y-4">

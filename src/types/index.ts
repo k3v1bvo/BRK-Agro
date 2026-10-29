@@ -1,5 +1,16 @@
 export type Currency = 'Bs.' | '$' | 'R$';
 
+export interface Employee {
+  id: string;
+  name: string;
+  role: 'Gerente General' | 'Cajero / POS' | 'Logística / Despacho' | 'Bodega / Inventario';
+  pin: string;
+  phone?: string;
+  email?: string;
+  active: boolean;
+  createdAt: string;
+}
+
 export interface StoreSettings {
   storeName: string;
   slogan: string;
@@ -14,6 +25,7 @@ export interface StoreSettings {
   bankAccountDetails: string;
   qrImageUrl?: string;
   designTheme?: 'brasil_heavy_duty' | 'bolivia_country';
+  employees?: Employee[];
 }
 
 export interface ProductVariant {

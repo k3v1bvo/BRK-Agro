@@ -20,6 +20,12 @@ export const INITIAL_STORE_SETTINGS: StoreSettings = {
   bankAccountDetails: 'Banco Ganadero: Cta Cte 1052-849201 en Bs. (Titular: BRK Agro SRL)',
   logoUrl: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=200&q=80',
   imgbbApiKey: 'eab6ae5aafbda13b9f3b4cb86600f61c',
+  employees: [
+    { id: 'emp-01', name: 'Carlos Méndez', role: 'Gerente General', pin: '1985', email: 'gerencia@brkagro.bo', phone: '+591 78541236', active: true, createdAt: '2026-01-15' },
+    { id: 'emp-02', name: 'María Eugenia Rojas', role: 'Cajero / POS', pin: '2026', email: 'caja@brkagro.bo', phone: '+591 71234567', active: true, createdAt: '2026-02-01' },
+    { id: 'emp-03', name: 'Roberto Siles', role: 'Logística / Despacho', pin: '3030', email: 'despacho@brkagro.bo', phone: '+591 79876543', active: true, createdAt: '2026-02-10' },
+    { id: 'emp-04', name: 'Jorge Vaca', role: 'Bodega / Inventario', pin: '4040', email: 'almacen@brkagro.bo', phone: '+591 74561234', active: true, createdAt: '2026-03-01' },
+  ],
 };
 
 export const INITIAL_PRODUCTS: Product[] = [
